@@ -7,9 +7,9 @@ require('../controller/frontend.php');
 try{//on essaie de faire des choses
     if(isset($_GET['action'])){//si le paramètre "action" est présent ds l'url
         if($_GET['action'] == 'identification'){//si le paramètre "action" présent ds l'url est identification
-            if(!empty($_GET['login']) && !empty($_GET['password'])){//vérifie si les champs ont bien été remplis
+            if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
                 if(($_POST['login'] == 'Jean_Forteroche') && ($_POST['password'] == 'Alaska')){//vérifie si le login et le password sont correct
-                    require('../view/frontend/wysiwygInterface.php');
+                    accessWysiwyg();
                 }else{
                     throw new Exception('Le login ou le mot de passe sont incorrect !');
                 }

@@ -5,7 +5,13 @@
         <h1 class="titreWysiwyg">Que l'inspiration soit avec vous !</h1>
     
     </div>
+        <div id="editeur" contentEditable ></div>
+
+        <div class="container-fluid text-center"><input id="givehtml" type="button" onclick="resultat();" value="Obtenir le HTML" ></code><br /></div>
+        <textarea id="resultat"></textarea>
+    
 
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
 <?php require('template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+

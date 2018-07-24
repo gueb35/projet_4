@@ -1,0 +1,48 @@
+/************page d'accueil**************/
+body{
+    background-image: url("../../public/images/alaska-68126_1920.jpg");
+}
+h1{
+    padding-top: 50px;
+}
+.episode{
+    width: 280px;
+    height: 400px;
+    border: 2px solid black;
+    border-radius: 2px;
+    margin: auto;
+    background-color: ghostwhite;
+}
+h2{
+    padding-top: 40px;
+}
+.auteur_couverture{
+    padding-top: 180px;
+}
+/***************page d'identification de l'administrateur***************/
+.boutonAccesWysiwyg{
+    padding-top: 20px;
+}
+/********page wysiwygInterface**********/
+.titreWysiwyg{
+    padding-top: 100px;
+}
+#editeur{
+    margin: auto;
+    width: 500px; /*La largeur de l'éditeur*/
+    height: 200px; /*La hauteur de l'éditeur*/
+    border: 2px solid black; /*Une bordure pour bien voir l'éditeur*/
+    padding: 5px; /*Une petite marge intérieure*/
+    overflow: auto; /*Cette propriété sert à envoyer le texte à la ligne au cas où il dépasse la largeur définie avant*/
+}
+#givehtml{
+    margin: 20px;
+}
+#resultat{
+    margin-left: 358px;
+    width: 500px; /*La largeur de l'éditeur*/
+    height: 200px; /*La hauteur de l'éditeur*/
+    border: 2px solid black; /*Une bordure pour bien voir l'éditeur*/
+    padding: 5px; /*Une petite marge intérieure*/
+    overflow: auto; /*Cette propriété sert à envoyer le texte à la ligne au cas où il dépasse la largeur définie avant*/
+}

@@ -10,7 +10,7 @@
 
     <div class="episode text-center">
         <h2>Billet simple pour l'alaska</h2>
-        <p class="auteur_couverture">Auteur :</p>
+        <p class="auteur_couverture"><strong>Auteur :</strong></p>
         <p>Jean Forteroche</p>
     </div>
 
