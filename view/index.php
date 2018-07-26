@@ -22,8 +22,9 @@ try{//on essaie de faire des choses
         } 
         else if($_GET['action'] == 'sendText'){
             if(!empty($_POST['resultat'])){
-                // sendText();//envoie l'épisode en bdd
-                showHomeView();//renvoie à la page d'accueil
+                // echo $_POST['resultat'];
+                sendText($_POST['resultat']);//envoie l'épisode en bdd
+                // showHomeView();//renvoie à la page d'accueil
             }else{
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
