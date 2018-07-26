@@ -1,13 +1,13 @@
 <?php
 
-use \alban\project4\model\PostManager;
+use \alban\project_4\model\PostManager;
 
-use \alban\project4\model\CommentManager;
+use \alban\project_4\model\CommentManager;
 
 
 // Chargement des classes
-// require_once('../model/PostManager.php');
-// require_once('../model/CommentManager.php');
+require_once('../model/PostManager.php');
+require_once('../model/CommentManager.php');
 function showHomeView()
 {
     require('../view/frontend/homeView.php');
@@ -19,6 +19,18 @@ function accessAdministrator()
 function accessWysiwyg()
 {
     require('../view/frontend/wysiwygInterface.php');
+}
+function sendText($resultat){
+    $postManager = new PostManager();
+    $affectedLines = $postManager->postText($resultat);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+//     //elle fait une requète ds CommentManager pour créer un commentaire
+
+    // if ($affectedLines === false) {
+    //     throw new Exception('Impossible d\'ajouter l'épisode !');
+    // }
+    // else {
+    //     header('Location: index.php?action=post&id=' . $postId);
+    // }
 }
 
 // function listPosts()//fonction utilisé pour lister tous les billets
