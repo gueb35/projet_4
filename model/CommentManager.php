@@ -1,6 +1,6 @@
 <?php
 
-namespace alban\project4\model;
+namespace alban\project_4\model;
 
 require_once('../model/Manager.php');//fait appel au fichier "Manager" pour la connexion à la bdd
 //cela évite de dupliquer le code de connexion à la bdd
@@ -16,14 +16,14 @@ class CommentManager extends Manager
     //     return $comments;
     // }
 
-    public function postComment($postId, $author, $comment)//fonction qui fait une requète pour créer des commentaires
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comment_space(post_id, author_name, comment, creation_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
+    // public function postText($resultat)//fonction qui fait une requète pour insérer des épisodes en bdd
+    // {
+    //     $db = $this->dbConnect();
+    //     $comments = $db->prepare('INSERT INTO author(resultat) VALUES(?, NOW())');
+    //     $affectedLines = $comments->execute(array($resultat));
 
-        return $affectedLines;
-    }
+    //     return $affectedLines;
+    // }
 
     // public function getComment($id)//a besoin de l'id du commentaire
     // {
