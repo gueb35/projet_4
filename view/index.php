@@ -24,7 +24,7 @@ try{//on essaie de faire des choses
             if(!empty($_POST['resultat'])){
                 // echo $_POST['resultat'];
                 sendText($_POST['resultat']);//envoie l'épisode en bdd
-                // showHomeView();//renvoie à la page d'accueil
+                showHomeView();//renvoie à la page d'accueil
             }else{
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
