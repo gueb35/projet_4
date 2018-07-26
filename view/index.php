@@ -17,11 +17,20 @@ try{//on essaie de faire des choses
                     throw new Exception('Le login ou le mot de passe sont incorrect !');
                 }
             }else{
-            throw new Exception('Vous n\'avez pas rempli tout les champs');
+                throw new Exception('Vous n\'avez pas rempli tout les champs');
             }
         } 
+        else if($_GET['action'] == 'sendText'){
+            if(!empty($_POST['resultat'])){
+                // sendText();//envoie l'épisode en bdd
+                showHomeView();//renvoie à la page d'accueil
+            }else{
+                throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
+            }
+            
+        }
     }else{
-        showHomeView();//si pas de présence de paramètre action ds l'url, envoie à la vue de la page d'accueil
+    showHomeView();//si pas de présence de paramètre action ds l'url, envoie à la vue de la page d'accueil
     }
     //     elseif($_GET['action'] == 'post'){//sinon si le paramètre 'action' ds l'url est 'post'
     //         if(isset($_GET['id']) && $_GET['id'] > 0){
