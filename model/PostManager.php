@@ -10,7 +10,7 @@ class PostManager extends Manager
     public function postText($resultat)//fonction qui fait une requète pour insérer des épisodes en bdd
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO author(resultat) VALUES(?, NOW())');
+        $comments = $db->prepare('INSERT INTO author(resultat) VALUES(?)');
         $affectedLines = $comments->execute(array($resultat));
 
         return $affectedLines;
