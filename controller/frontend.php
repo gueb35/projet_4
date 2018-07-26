@@ -8,7 +8,14 @@ use \alban\project4\model\CommentManager;
 // Chargement des classes
 // require_once('../model/PostManager.php');
 // require_once('../model/CommentManager.php');
-
+function showHomeView()
+{
+    require('../view/frontend/homeView.php');
+}
+function accessAdministrator()
+{
+    require('../view/frontend/administratorAccessView.php');
+}
 function accessWysiwyg()
 {
     require('../view/frontend/wysiwygInterface.php');

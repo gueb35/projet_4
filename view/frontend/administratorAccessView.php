@@ -4,7 +4,7 @@
     <div class="text-center"> 
         <h1>Identification de l'administrateur</h1>
     
-        <form action="../index.php?action=identification" method="post">
+        <form action="./index.php?action=identification" method="post">
             <div>
                 <label for="login">Pseudo :</label><br />
                 <input type="text" id="login" name="login" />
