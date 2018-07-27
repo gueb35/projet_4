@@ -7,15 +7,6 @@ require_once('../model/Manager.php');//fait appel au fichier "Manager" pour la c
 
 class CommentManager extends Manager
 {
-    // public function getComments($postId)//fonction qui fait une requète pour récupèrer les commentaires
-    // {
-    //     $db = $this->dbConnect();
-    //     $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-    //     $comments->execute(array($postId));
-
-    //     return $comments;
-    // }
-
     public function postComment($postId, $author, $comment)//fonction qui fait une requète pour créer des commentaires
     {
         $db = $this->dbConnect();
@@ -24,14 +15,14 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
-    // public function postComment($postId, $author, $comment)//fonction qui fait une requète pour créer des commentaires
-    // {
-    //     $db = $this->dbConnect();
-    //     $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-    //     $affectedLines = $comments->execute(array($postId, $author, $comment));
+    public function getComments($postId)//fonction qui fait une requète pour récupèrer les commentaires
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT id, post_id, author, comment, creation_date DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE post_id = ? ORDER BY creation_date DESC');
+        $comments->execute(array($postId));
 
-    //     return $affectedLines;
-    // }
+        return $comments;
+    }
     // public function getComments($postId)//fonction qui fait une requète pour récupèrer les commentaires
     // {
     //     $db = $this->dbConnect();
@@ -40,17 +31,7 @@ class CommentManager extends Manager
 
     //     return $comments;
     // }
-
-    // public function postText($resultat)//fonction qui fait une requète pour insérer des épisodes en bdd
-    // {
-    //     $db = $this->dbConnect();
-    //     $comments = $db->prepare('INSERT INTO author(resultat) VALUES(?, NOW())');
-    //     $affectedLines = $comments->execute(array($resultat));
-
-    //     return $affectedLines;
-    // }
-
-    // public function getComment($id)//a besoin de l'id du commentaire
+    // public function getComment($id)//fonction qui fait une requète pour récupèrer un commentaire a besoin de l'id du commentaire
     // {
     //     $db = $this->dbConnect();//stocke la connexion
     //     $query = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id=?');
