@@ -7,6 +7,9 @@
 
     <div class="row">
         <div class="episode1andmore col-md-offset-1 col-md-5">
+            <p>
+                <?= htmlspecialchars($post['resultat']) ?>
+            </p>
         </div>
         <div class="col-md-offset-1 col-md-3">
             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
@@ -30,3 +33,13 @@
 
 <?php require('template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
 
+<!-- <div class="news">
+    <h3>
+        <?= htmlspecialchars($post['title']) ?>
+        <em>le <?= $post['creation_date_fr'] ?></em>
+    </h3>
+    
+    <p>
+        <?= nl2br(htmlspecialchars($post['content'])) ?>
+    </p>
+</div> -->

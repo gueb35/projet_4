@@ -29,7 +29,7 @@ try{//on essaie de faire des choses
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
             
-        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//envoie à la vue permettant de voir les épisodes
+        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//récupère un épisode et envoie à la vue
             post($_GET['id']);
         }
     }

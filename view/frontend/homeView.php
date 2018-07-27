@@ -9,14 +9,14 @@
     </div>
 
     <div class="episode text-center">
+        <!-- <h2><?=  htmlspecialchars($req['title']) ?></h2> -->
         <h2>Billet simple pour l'alaska</h2>
         <p class="auteur_couverture"><strong>Auteur :</strong></p>
         <p>Jean Forteroche</p>
     </div>
 
 
-<!-- $posts->closeCursor(); ?> -->
-
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
 <?php require('template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+
