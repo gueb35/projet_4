@@ -41,10 +41,10 @@ function post($id)//fonction pour afficher l'épisode
 {
     $postManager = new PostManager();// Création d'un objet(instance)
 
-    $req = $postManager->getPost();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $post = $postManager->getPost($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète préparé pour afficher le billet selectioné
 
-    // require('index.php?action=showHomeView&id=1');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
+    require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
 }
 // function listPosts()//fonction utilisé pour lister tous les billets
 // {
