@@ -17,6 +17,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="../view/index.php">Accueil</a></li>
                         <li><a href="../view/index.php?action=accessAdministrator">Espace administrateur</a></li>
+                        <li><a href="../view/index.php?action=accessEpisode">Espace lecture</a></li>
                     </ul>
                 </div>
         </div>
