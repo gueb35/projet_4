@@ -10,10 +10,19 @@ class PostManager extends Manager
     public function postText($resultat)//fonction qui fait une requète pour insérer des épisodes en bdd
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO author(resultat) VALUES(?)');
-        $affectedLines = $comments->execute(array($resultat));
+        $post = $db->prepare('INSERT INTO author(resultat) VALUES(?)');
+        $affectedLines = $post->execute(array($resultat));
 
         return $affectedLines;
+    }
+        public function getPost($id)//récupère un épisode
+    {
+        $db = $this->dbConnect($id);
+        $req = $db->prepare('SELECT id, resultat FROM author WHERE id = ?');
+        $req->execute(array($id));
+        $post = $req->fetch();
+    
+        return $post;
     }
     // public function getPosts()//récupère tous les épisodes
     // {
@@ -23,3 +32,12 @@ class PostManager extends Manager
     //     return $req;
     // }
 }
+// public function getPost($postId)//récupère le billet selectionné
+// {
+//     $db = $this->dbConnect();
+//     $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+//     $req->execute(array($postId));
+//     $post = $req->fetch();
+
+//     return $post;
+// }
