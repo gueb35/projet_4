@@ -28,7 +28,18 @@
             </form>
         </div>
     </div>
+    <h2>Commentaires</h2>
 
+<!--a supprimer si on veut le bon affichage-->
+    <!-- <?php
+    while ($comment = $comments->fetch())
+    {
+    ?>
+        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
+        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <?php
+    }
+    ?> -->
 
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 

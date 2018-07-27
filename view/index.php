@@ -9,6 +9,7 @@ try{//on essaie de faire des choses
         if($_GET['action'] == 'accessAdministrator'){
             accessAdministrator();//envoie à la vue de la page d'identification de l'administrateur
         }
+        
         else if($_GET['action'] == 'identification'){//si le paramètre "action" présent ds l'url est identification
             if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
                 if(($_POST['login'] == 'Jean_Forteroche') && ($_POST['password'] == 'Alaska')){//vérifie si le login et le password sont correct
@@ -20,6 +21,7 @@ try{//on essaie de faire des choses
                 throw new Exception('Vous n\'avez pas rempli tout les champs');
             }
         } 
+
         else if($_GET['action'] == 'sendText'){
             if(!empty($_POST['resultat'])){
                 // echo $_POST['resultat'];
@@ -29,14 +31,16 @@ try{//on essaie de faire des choses
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
             
-        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//récupère un épisode et envoie à la vue
-            post($_GET['id']);
-            // accessEpisode();
+        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
+            post($_GET['id']);//permet d'afficher le texte ds la zone de lecture
+            showComments($_GET['id']);//permet d'afficher les commentaires associés
         }
+
         elseif (($_GET['action'] == 'addComment') && ($_GET['id'] == '3')) {//permet d'envoyer un commentaire
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
+                    showComment($_GET['id']);//permet d'afficher les commentaires associés
                 }
                 else {
                     // Autre exception
