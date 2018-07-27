@@ -31,6 +31,22 @@ try{//on essaie de faire des choses
             
         }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//récupère un épisode et envoie à la vue
             post($_GET['id']);
+            // accessEpisode();
+        }
+        elseif (($_GET['action'] == 'addComment') && ($_GET['id'] == '3')) {//permet d'envoyer un commentaire
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
+                }
+                else {
+                    // Autre exception
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }
     }
     else{
