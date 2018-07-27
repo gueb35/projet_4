@@ -50,3 +50,10 @@ h2{
 .errorMessage{
     padding-top: 40px;
 }
+/**************page de lecture des épisodes : readEpisodeView.php****************/
+.episode1andmore{
+    height: 400px;
+    border: 2px solid black;
+    border-radius: 2px;
+    background-color: ghostwhite;
+}
