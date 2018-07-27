@@ -8,6 +8,7 @@ use \alban\project_4\model\CommentManager;
 // Chargement des classes
 require_once('../model/PostManager.php');
 require_once('../model/CommentManager.php');
+/************fonctions pour accéder aux vues*************/
 function showHomeView()
 {
     require('../view/frontend/homeView.php');
@@ -20,10 +21,13 @@ function accessWysiwyg()
 {
     require('../view/frontend/wysiwygInterface.php');
 }
+function accessEpisode(){
+    require('../view/frontend/readEpisodeView.php');
+}
+/*************************/
 function sendText($resultat){
     $postManager = new PostManager();
     $affectedLines = $postManager->postText($resultat);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-//     //elle fait une requète ds CommentManager pour créer un commentaire
 
     // if ($affectedLines === false) {
     //     throw new Exception('Impossible d\'ajouter l'épisode !');
@@ -32,7 +36,16 @@ function sendText($resultat){
     //     header('Location: index.php?action=post&id=' . $postId);
     // }
 }
+/***************************/
+function post($id)//fonction pour afficher l'épisode
+{
+    $postManager = new PostManager();// Création d'un objet(instance)
 
+    $req = $postManager->getPost();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    // elle fait une requète préparé pour afficher le billet selectioné
+
+    // require('index.php?action=showHomeView&id=1');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
+}
 // function listPosts()//fonction utilisé pour lister tous les billets
 // {
 //     $postManager = new PostManager(); // Création d'un objet(instance)
