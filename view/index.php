@@ -29,8 +29,11 @@ try{//on essaie de faire des choses
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
             
+        }else if($_GET['action'] == 'accessEpisode'){//envoie à la vue permettant de voir les épisodes
+            accessEpisode();
         }
-    }else{
+    }
+    else{
     showHomeView();//si pas de présence de paramètre action ds l'url, envoie à la vue de la page d'accueil
     }
     //     elseif($_GET['action'] == 'post'){//sinon si le paramètre 'action' ds l'url est 'post'
