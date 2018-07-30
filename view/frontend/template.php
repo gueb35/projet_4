@@ -17,7 +17,9 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="../view/index.php">Accueil</a></li>
                         <li><a href="../view/index.php?action=accessAdministrator">Espace administrateur</a></li>
-                        <li><a href="../view/index.php?action=accessEpisode&amp;id=3">Espace lecture</a></li>
+                        <li><a href="../view/index.php?action=accessEpisode&amp;id=1">Espace lecture</a></li><!--définir l'id à 1 
+                        pour avoir avoir l'épisode 1 de base en arrivant sur la vue readEpisodeView.php, crée 2 boutons sous la
+                         zone de lecture ("épisode suivant", et "épisode précédent") qui incrémente ou décrémente de 1 l'id-->
                     </ul>
                 </div>
         </div>
@@ -25,4 +27,3 @@
         <?= $content ?>    
     </body>
 </html>
-<!-- <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post"> -->
