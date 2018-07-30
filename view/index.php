@@ -31,16 +31,16 @@ try{//on essaie de faire des choses
                 throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
             }
             
-        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '3')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
+        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
             post($_GET['id']);//permet d'afficher le texte ds la zone de lecture
-            showComments($_GET['id']);//permet d'afficher les commentaires associés
+            // showComments($_GET['id']);//permet d'afficher les commentaires associés
         }
 
-        elseif (($_GET['action'] == 'addComment') && ($_GET['id'] == '3')) {//permet d'envoyer un commentaire
+        elseif (($_GET['action'] == 'addComment') && ($_GET['id'] > '0')) {//permet d'envoyer un commentaire
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
-                    showComment($_GET['id']);//permet d'afficher les commentaires associés
+                    // showComment($_GET['id']);//permet d'afficher les commentaires associés
                 }
                 else {
                     // Autre exception
