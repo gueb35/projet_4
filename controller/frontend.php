@@ -21,9 +21,9 @@ function accessWysiwyg()
 {
     require('../view/frontend/wysiwygInterface.php');
 }
-function accessEpisode(){
-    require('../view/frontend/readEpisodeView.php');
-}
+// function accessEpisode(){
+//     require('../view/frontend/readEpisodeView.php');
+// }
 /*************************/
 function sendText($resultat){//permet d'envoyer un épisode en bdd
     $postManager = new PostManager();
@@ -40,9 +40,11 @@ function sendText($resultat){//permet d'envoyer un épisode en bdd
 function post($id)//fonction pour afficher l'épisode
 {
     $postManager = new PostManager();// Création d'un objet(instance)
-
     $post = $postManager->getPost($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-    // elle fait une requète préparé pour afficher le billet selectioné
+    // elle fait une requète préparé pour afficher le billet selectionné
+    $commentManager = new CommentManager();// Création d'un objet(instance)
+    $comments = $commentManager->getComments($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    // elle fait une requète ds CommentManager.php pour afficher le commentaire associé au billet selectionné
 
     require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
 }
@@ -64,14 +66,14 @@ function addComment($postId, $author, $comment)//fonction qui permet d'envoyer u
         header('Location: index.php?action=accessEpisode&id=' . $postId);
     }
 
-function showComments($id)//fonction pour afficher les commentaires
-{
-    $commentManager = new CommentManager();// Création d'un objet(instance)
-    $comments = $commentManager->getComments($_GET['id']);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-    // elle fait une requète ds CommentManager.php pour afficher le commentaire associé au billet selectioné
+// function showComments($id)//fonction pour afficher les commentaires
+// {
+//     $commentManager = new CommentManager();// Création d'un objet(instance)
+//     $comments = $commentManager->getComments($_GET['id']);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+//     // elle fait une requète ds CommentManager.php pour afficher le commentaire associé au billet selectionné
 
-    require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
-}
+//     require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
+// }
 
 
 }
