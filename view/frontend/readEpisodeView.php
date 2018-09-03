@@ -27,7 +27,7 @@
                     </div>
             </form>
             <form action="index.php?action=accessEpisode&amp;id=<?= $post['id'] - 1 ?>" method="post">
-            <input type="submit" value="épisode précédent"/>
+                <input type="submit" value="épisode précédent"/>
             </form>
             <form action="index.php?action=accessEpisode&amp;id=<?= $post['id'] + 1 ?>" method="post">
                 <input type="submit" value="épisode suivant"/>
