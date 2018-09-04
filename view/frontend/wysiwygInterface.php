@@ -7,10 +7,13 @@
 
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée à la création d'un nouvel épisode :</h3>
+        <p class="text-center">Afin de créer un nouvel épisode, écrivez votre texte dans la zone prévu à cet effet,
+        mettez-le forme puis cliquez sur le bouton "Envoyer votre épisode".
+        </p> 
 
     <div class="create">
         <form action="./index.php?action=sendText" method="post">
-            <textarea id="resultat" name="resultat"></textarea>
+            <textarea id="resultat" name="resultat">Ecrivez ici!</textarea>
             <div class="text-center">
                 <input type="submit" value="Envoyer votre épisode"/>
             </div>
@@ -19,6 +22,12 @@
 
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée au remplacement d'un épisode :</h3>
+        <p class="text-center">Afin de remplacer un épisode, récupérer le numéro de l'épisode sur l'espace lecture
+        dans la barre d'adresse après id=.Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
+        puis rentrez ce numéro dans le champ id.
+        Ensuite, écrivez votre texte dans la zone prévu à cet effet,
+        mettez-le forme puis cliquez sur le bouton "Envoyer".
+        </p>
 
     <div class="update">
     
@@ -26,6 +35,11 @@
 
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée à la suppression d'un épisode :</h3>
+        <p class="text-center">Afin de supprimer un épisode, récupérer le numéro de l'épisode sur l'espace lecture
+        dans la barre d'adresse après id=.Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
+        puis rentrez ce numéro dans le champ id.
+        Ensuite, cliquez sur le bouton "Supprimer".
+        </p>
 
     <div class="delete">
 
