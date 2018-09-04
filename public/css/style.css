@@ -13,8 +13,8 @@ h1{
     margin: auto;
     background-color: ghostwhite;
 }
-h2{
-    padding-top: 40px;
+.titreDuLivre{
+    padding-top: 30px;
 }
 .auteur_couverture{
     padding-top: 180px;
@@ -27,24 +27,12 @@ h2{
 .titreWysiwyg{
     padding-top: 40px;
 }
-#editeur{
+.separation{
+    width: 400px;
+    height: 3px;
     margin: auto;
-    width: 500px; /*La largeur de l'éditeur*/
-    height: 190px; /*La hauteur de l'éditeur*/
-    border: 2px solid black; /*Une bordure pour bien voir l'éditeur*/
-    padding: 5px; /*Une petite marge intérieure*/
-    overflow: auto; /*Cette propriété sert à envoyer le texte à la ligne au cas où il dépasse la largeur définie avant*/
-}
-#givehtml{
-    margin: 10px;
-}
-#resultat{
-    /* margin-left: 358px; */
-    /* width: 500px; La largeur de l'éditeur */
-    height: 190px; /*La hauteur de l'éditeur*/
-    border: 2px solid black; /*Une bordure pour bien voir l'éditeur*/
-    padding: 5px; /*Une petite marge intérieure*/
-    overflow: auto; /*Cette propriété sert à envoyer le texte à la ligne au cas où il dépasse la largeur définie avant*/
+    margin-top: 30px;
+    background-color: black;
 }
 /***************page d'erreur*******************/
 .errorMessage{
