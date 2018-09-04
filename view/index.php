@@ -24,11 +24,10 @@ try{//on essaie de faire des choses
 
         else if($_GET['action'] == 'sendText'){
             if(!empty($_POST['resultat'])){
-                // echo $_POST['resultat'];
                 sendText($_POST['resultat']);//envoie l'épisode en bdd
                 showHomeView();//renvoie à la page d'accueil
             }else{
-                throw new Exception('Il n\'y a pas de texte formater en html dans la zone prévue à cet effet !');
+                throw new Exception('Il n\'y a pas de texte dans la zone de rédaction des épisode !');
             }
             
         }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
@@ -50,6 +49,14 @@ try{//on essaie de faire des choses
             else {
                 // Autre exception
                 throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+
+        else if($_GET['action'] == 'deletePost'){//permet la suppression d'un épisode
+            if(!empty($_POST['id'])){
+                deletePost($_POST['id']);
+            }else {
+                throw new Exception('Vous n\'avez pas précisé le numéro de l\'épisode !');
             }
         }
     }
