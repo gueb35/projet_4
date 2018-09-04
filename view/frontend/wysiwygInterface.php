@@ -36,12 +36,16 @@
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée à la suppression d'un épisode :</h3>
         <p class="text-center">Afin de supprimer un épisode, récupérer le numéro de l'épisode sur l'espace lecture
-        dans la barre d'adresse après id=.Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
-        puis rentrez ce numéro dans le champ id.
-        Ensuite, cliquez sur le bouton "Supprimer".
+        dans la barre d'adresse après id=.<br/>Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
+        puis rentrez ce numéro dans le champ ci-dessous.<br/>Ensuite, cliquez sur le bouton "Supprimer".
         </p>
 
-    <div class="delete">
+    <div class="delete text-center">
+        <form action="./index.php?action=deletePost" methode="post">
+            <label for="id">Numéro de l'épisode :</label><br/>
+            <input type="number" id="id" name="id" placeholder="Ecrire ici le numéro !"/><br/>
+            <input type="submit" value="Supprimer"/>
+        </form>
 
     </div>
 
