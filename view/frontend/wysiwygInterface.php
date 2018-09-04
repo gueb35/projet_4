@@ -41,9 +41,9 @@
         </p>
 
     <div class="delete text-center">
-        <form action="./index.php?action=deletePost" methode="post">
-            <label for="id">Numéro de l'épisode :</label><br/>
-            <input type="number" id="id" name="id" placeholder="Ecrire ici le numéro !"/><br/>
+        <form action="./index.php?action=deletePost" method="post">
+            <label for="postNumber">Numéro de l'épisode :</label><br/>
+            <input type="number" id="postNumber" name="postNumber" placeholder="Ecrire ici le numéro !"/><br/>
             <input type="submit" value="Supprimer"/>
         </form>
 

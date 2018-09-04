@@ -21,9 +21,9 @@ function accessWysiwyg()
 {
     require('../view/frontend/wysiwygInterface.php');
 }
-// function accessEpisode(){
-//     require('../view/frontend/readEpisodeView.php');
-// }
+function accessEpisode(){
+    require('../view/frontend/readEpisodeView.php');
+}
 /*************************/
 function sendText($resultat){//permet d'envoyer un épisode en bdd
     $postManager = new PostManager();
@@ -65,11 +65,15 @@ function addComment($postId, $author, $comment)//fonction qui permet d'envoyer u
     else {
         header('Location: index.php?action=accessEpisode&id=' . $postId);
     }
+}
 /***************************/
 function deletePost($id)
 {
     $postManager = new PostManager();
-    $post = $postManager->deletePost($id);
+    $postManager->deletePost($id);
+
+    require('../view/frontend/wysiwygInterface.php');
+
 }
 // function showComments($id)//fonction pour afficher les commentaires
 // {
@@ -81,7 +85,7 @@ function deletePost($id)
 // }
 
 
-}
+
 // function listPosts()//fonction utilisé pour lister tous les billets
 // {
 //     $postManager = new PostManager(); // Création d'un objet(instance)

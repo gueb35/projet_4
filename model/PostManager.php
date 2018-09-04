@@ -15,7 +15,7 @@ class PostManager extends Manager
 
         return $affectedLines;
     }
-        public function getPost($id)//récupère un épisode
+    public function getPost($id)//récupère un épisode
     {
         $db = $this->dbConnect($id);
         $req = $db->prepare('SELECT id, resultat FROM author WHERE id = ?');
@@ -23,6 +23,11 @@ class PostManager extends Manager
         $post = $req->fetch();
     
         return $post;
+    }
+    public function deletePost($id){
+        $db = $this->dbConnect();
+        $delete = $db->prepare('DELETE FROM author WHERE id = ? LIMIT 1');
+        $delete->execute(array($id));
     }
     // public function getPosts()//récupère tous les épisodes
     // {
