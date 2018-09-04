@@ -65,7 +65,12 @@ function addComment($postId, $author, $comment)//fonction qui permet d'envoyer u
     else {
         header('Location: index.php?action=accessEpisode&id=' . $postId);
     }
-
+/***************************/
+function deletePost($id)
+{
+    $postManager = new PostManager();
+    $post = $postManager->deletePost($id);
+}
 // function showComments($id)//fonction pour afficher les commentaires
 // {
 //     $commentManager = new CommentManager();// Création d'un objet(instance)
