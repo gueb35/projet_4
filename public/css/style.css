@@ -39,8 +39,8 @@ h2{
     margin: 10px;
 }
 #resultat{
-    margin-left: 358px;
-    width: 500px; /*La largeur de l'éditeur*/
+    /* margin-left: 358px; */
+    /* width: 500px; La largeur de l'éditeur */
     height: 190px; /*La hauteur de l'éditeur*/
     border: 2px solid black; /*Une bordure pour bien voir l'éditeur*/
     padding: 5px; /*Une petite marge intérieure*/
