@@ -53,11 +53,11 @@ try{//on essaie de faire des choses
         }
 
         else if($_GET['action'] == 'deletePost'){//permet la suppression d'un épisode
-            if(!empty($_POST['postNumber'])){
-                // echo $_POST['postNumber'];
-                deletePost($_POST['postNumber']);
+            if(!empty($_POST['postNumber']) && ($_POST['postNumber'] > '0')){
+                    // echo $_POST['postNumber'];
+                    deletePost($_POST['postNumber']);
             }else {
-                throw new Exception('Vous n\'avez pas précisé le numéro de l\'épisode !');
+                throw new Exception('Vous n\'avez pas précisé le numéro de l\'épisode ou le numéro n\'est pas supérieur à 0 !');
             }
         }
     }
