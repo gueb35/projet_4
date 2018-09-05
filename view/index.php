@@ -30,16 +30,24 @@ try{//on essaie de faire des choses
                 throw new Exception('Il n\'y a pas de texte dans la zone de rédaction des épisode !');
             }
             
-        }else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
+        }
+
+        //accède depuis le lien du menu de navigation(accès de base)
+        else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
             post($_GET['id']);//permet d'afficher le texte ds la zone de lecture
-            // showComments($_GET['id']);//permet d'afficher les commentaires associés
+        }        
+        else if(($_GET['action'] == 'accessEpisodeInferior') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
+            postInferior($_GET['id']);//permet d'afficher le texte ds la zone de lecture
+        }
+        else if(($_GET['action'] == 'accessEpisodeSuperior') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
+            // var_dump($post);die;
+            postSuperior($_GET['id']);//permet d'afficher le texte ds la zone de lecture
         }
 
         elseif (($_GET['action'] == 'addComment') && ($_GET['id'] > '0')) {//permet d'envoyer un commentaire
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
-                    // showComment($_GET['id']);//permet d'afficher les commentaires associés
                 }
                 else {
                     // Autre exception

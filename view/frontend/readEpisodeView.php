@@ -26,10 +26,10 @@
                         <input type="submit" />
                     </div>
             </form>
-            <form action="index.php?action=accessEpisode&amp;id=<?= $post['id'] - 1 ?>" method="post">
+            <form action="index.php?action=accessEpisodeInferior&amp;id=<?= $post['id'] ?>" method="post">
                 <input type="submit" value="épisode précédent"/>
             </form>
-            <form action="index.php?action=accessEpisode&amp;id=<?= $post['id'] + 1 ?>" method="post">
+            <form action="index.php?action=accessEpisodeSuperior&amp;id=<?= $post['id'] ?>" method="post">
                 <input type="submit" value="épisode suivant"/>
             </form>
         </div>
