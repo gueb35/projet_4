@@ -29,14 +29,15 @@ class PostManager extends Manager
         $delete = $db->prepare('DELETE FROM author WHERE id = ? LIMIT 1');
         $delete->execute(array($id));
     }
-    // public function getPosts()//récupère tous les épisodes
-    // {
-    //     $db = $this->dbConnect();
-    //     $req = $db->query('SELECT id, author, title, content, FROM author ORDER BY id');
-
-    //     return $req;
-    // }
 }
+// public function getPosts()//récupère tous les épisodes
+// {
+//     $db = $this->dbConnect();
+//     $req = $db->query('SELECT id, author, title, content, FROM author ORDER BY id');
+
+//     return $req;
+// }
+
 // public function getPost($postId)//récupère le billet selectionné
 // {
 //     $db = $this->dbConnect();

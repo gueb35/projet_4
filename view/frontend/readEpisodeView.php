@@ -5,7 +5,7 @@
         <h1>Bonne lecture!</h1>
     </div>
 
-    <div class="row">
+    <div class="readEpisodePage row">
         <div class="episode1andmore col-md-offset-1 col-md-5">
             <p>
                 <?= ($post['resultat']) ?>
