@@ -5,12 +5,14 @@
         <h1 class="titreWysiwyg">Que l'inspiration soit avec vous !</h1>
     </div>
 
+
     <div class="separation"></div>
+
+<!-- CREATE -->
     <h3 class="text-center">Partie réservée à la création d'un nouvel épisode :</h3>
         <p class="text-center">Afin de créer un nouvel épisode, écrivez votre texte dans la zone prévu à cet effet,
         mettez-le forme puis cliquez sur le bouton "Envoyer votre épisode".
         </p> 
-
     <div class="create">
         <form action="./index.php?action=sendText" method="post">
             <textarea id="resultat" name="resultat">Ecrivez ici!</textarea>
@@ -20,31 +22,35 @@
         </form>
     </div>
 
+
     <div class="separation"></div>
+
+<!-- UPDATE -->
     <h3 class="text-center">Partie réservée au remplacement d'un épisode :</h3>
         <p class="text-center">Afin de remplacer un épisode, récupérer le numéro situé en bas de page sur l'espace lecture, 
         puis rentrez ce numéro dans le champ "Numéro de l'épisode :".
         Ensuite, écrivez votre texte dans la zone prévu à cet effet,
         mettez-le forme puis cliquez sur le bouton "Modifiez votre épisode".
         </p>
-
     <div class="update">
             <form action="./index.php?action=updateText" method="post">
                 <textarea id="updateResultat" name="updateResultat">Ecrivez ici!</textarea>
                 <div class="text-center">
-                    <label for="postNumber">Numéro de l'épisode :</label><br/>
-                    <input type="number" id="postNumber" name="postNumber" placeholder="Ecrire ici le numéro !"/><br/>
+                    <label for="updateNumber">Numéro de l'épisode :</label><br/>
+                    <input type="number" id="updateNumber" name="updateNumber" placeholder="Ecrire ici le numéro !"/><br/>
                     <input type="submit" value="Modifiez votre épisode"/>
                 </div>
             </form>
     </div>
 
+
     <div class="separation"></div>
+
+<!-- DELETE -->
     <h3 class="text-center">Partie réservée à la suppression d'un épisode :</h3>
         <p class="text-center">Afin de supprimer un épisode, récupérer le numéro situé en bas de page sur l'espace lecture, 
         puis rentrez ce numéro dans le champ ci-dessous.<br/>Ensuite, cliquez sur le bouton "Supprimer".
         </p>
-
     <div class="delete text-center">
         <form action="./index.php?action=deletePost" method="post">
             <label for="postNumber">Numéro de l'épisode :</label><br/>
