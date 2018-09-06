@@ -65,8 +65,9 @@ function postSuperior($id){
     $postManager = new PostManager();// Création d'un objet(instance)
     $post = $postManager->getPostSuperior($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète préparé pour afficher le billet selectionné
+    
     $commentManager = new CommentManager();// Création d'un objet(instance)
-    $comments = $commentManager->getComments($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $comments = $commentManager->getCommentsSuperior($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète ds CommentManager.php pour afficher le commentaire associé au billet selectionné   
 
     require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
@@ -95,6 +96,9 @@ function deletePost($id)
 {
     $postManager = new PostManager();
     $postManager->deletePost($id);
+
+    $commentManager = new CommentManager();
+    $commentManager->deleteComment($id);
 
     require('../view/frontend/wysiwygInterface.php');
 

@@ -24,22 +24,23 @@ class PostManager extends Manager
     
         return $post;
     }
-    public function getPostInferior($id)//récupère un épisode
+    public function getPostInferior($id)//récupère l'épisode précédent
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT * FROM author WHERE id < ? LIMIT 1');
+        $req = $db->prepare('SELECT * FROM author WHERE id = ? LIMIT 1');
         $req->execute(array($id));
         $post = $req->fetch();
+        // var_dump($post);die;
     
         return $post;
     }  
-    public function getPostSuperior($id)//récupère un épisode
+    public function getPostSuperior($id)//récupère l'épisode suivant
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT * FROM author WHERE id > ? LIMIT 1');
+        $req = $db->prepare('SELECT * FROM author WHERE id > ? - 1 LIMIT 1');
         $req->execute(array($id));
         $post = $req->fetch();
-        
+        // var_dump($post);die;
         return $post;
     }       
     public function deletePost($id){

@@ -22,8 +22,7 @@
 
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée au remplacement d'un épisode :</h3>
-        <p class="text-center">Afin de remplacer un épisode, récupérer le numéro de l'épisode sur l'espace lecture
-        dans la barre d'adresse après id=.Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
+        <p class="text-center">Afin de remplacer un épisode, récupérer le numéro situé en bas de page sur l'espace lecture, 
         puis rentrez ce numéro dans le champ id.
         Ensuite, écrivez votre texte dans la zone prévu à cet effet,
         mettez-le forme puis cliquez sur le bouton "Envoyer".
@@ -35,8 +34,7 @@
 
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée à la suppression d'un épisode :</h3>
-        <p class="text-center">Afin de supprimer un épisode, récupérer le numéro de l'épisode sur l'espace lecture
-        dans la barre d'adresse après id=.<br/>Exemple : view/index.php?action=accessEpisode&id=<strong>1</strong>, 
+        <p class="text-center">Afin de supprimer un épisode, récupérer le numéro situé en bas de page sur l'espace lecture, 
         puis rentrez ce numéro dans le champ ci-dessous.<br/>Ensuite, cliquez sur le bouton "Supprimer".
         </p>
 
