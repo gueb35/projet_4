@@ -44,7 +44,7 @@ try{//on essaie de faire des choses
             postSuperior($_GET['id']);//permet d'afficher le prochain épisode ds la zone de lecture
         }
 
-        elseif (($_GET['action'] == 'addComment') && ($_GET['id'] > '0')) {//permet d'envoyer un commentaire
+        else if (($_GET['action'] == 'addComment') && ($_GET['id'] > '0')) {//permet d'envoyer un commentaire
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
@@ -58,6 +58,18 @@ try{//on essaie de faire des choses
                 // Autre exception
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        }
+
+        else if($_GET['action'] == 'updateText'){
+            if(!empty($_POST['updateNumber']) && !empty($_POST['updateResultat'])){//permet de remplacer un épisode
+                if($_POST['updateNumber'] > '0'){
+                    updatepost($_POST['updateNumber']);
+                }else {
+                    throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
+                }
+            }else {
+                throw new Exception('Vous n\'avez pas précisé le numéro de l\'épisode et/ou vous n\'avez pas mis de texte de remplacement !');
+            }            
         }
 
         else if($_GET['action'] == 'deletePost'){//permet la suppression d'un épisode
