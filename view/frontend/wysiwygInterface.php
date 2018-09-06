@@ -23,13 +23,20 @@
     <div class="separation"></div>
     <h3 class="text-center">Partie réservée au remplacement d'un épisode :</h3>
         <p class="text-center">Afin de remplacer un épisode, récupérer le numéro situé en bas de page sur l'espace lecture, 
-        puis rentrez ce numéro dans le champ id.
+        puis rentrez ce numéro dans le champ "Numéro de l'épisode :".
         Ensuite, écrivez votre texte dans la zone prévu à cet effet,
-        mettez-le forme puis cliquez sur le bouton "Envoyer".
+        mettez-le forme puis cliquez sur le bouton "Modifiez votre épisode".
         </p>
 
     <div class="update">
-    
+            <form action="./index.php?action=updateText" method="post">
+                <textarea id="updateResultat" name="updateResultat">Ecrivez ici!</textarea>
+                <div class="text-center">
+                    <label for="postNumber">Numéro de l'épisode :</label><br/>
+                    <input type="number" id="postNumber" name="postNumber" placeholder="Ecrire ici le numéro !"/><br/>
+                    <input type="submit" value="Modifiez votre épisode"/>
+                </div>
+            </form>
     </div>
 
     <div class="separation"></div>
