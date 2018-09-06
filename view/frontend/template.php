@@ -15,6 +15,13 @@
                 language_url: '../public/js/tinymce/langs/fr_FR.js'
             });
         </script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: '#updateResultat',
+                language: 'fr_FR',
+                language_url: '../public/js/tinymce/langs/fr_FR.js'
+            });
+        </script>
     </head>
         
     <body>
