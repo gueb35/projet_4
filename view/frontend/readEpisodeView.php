@@ -10,9 +10,6 @@
             <p>
                 <?= ($post['resultat']) ?>
             </p>
-            <p> 
-                <?= ($post['id']) ?>
-            </p>
         </div>
         <div class="col-md-offset-1 col-md-3">
             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">

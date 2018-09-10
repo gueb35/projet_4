@@ -15,6 +15,14 @@ class PostManager extends Manager
 
         return $affectedLines;
     }
+    public function getPosts()
+    {
+        $db = $this->dbConnect();
+        $posts = $db->query('SELECT id,resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');
+        // var_dump($posts);die;
+    
+        return $posts;    
+    }
     public function getPost($id)//récupère un épisode
     {
         $db = $this->dbConnect($id);

@@ -38,13 +38,27 @@ h1{
 .errorMessage{
     padding-top: 40px;
 }
-/**************page de lecture des épisodes : readEpisodeView.php****************/
+/**************page de lecture d'un épisode : readEpisodeView.php****************/
 .episode1andmore{
-    height: 400px;
+    height: 100%;
     border: 2px solid black;
     border-radius: 2px;
     background-color: ghostwhite;
 }
 .readEpisodePage{
     width: 100%;
+}
+/************page de lecture des épisodes tronqués : readEpisodeHomeView.php************/
+.readEpisodesPage{
+    width: 55%;
+    margin: auto;
+    border-top:2px solid black;
+    border-left:2px solid black;
+    border-right:2px solid black;
+    
+}
+.separationPost{
+    width: 100%;
+    margin: auto;
+    border:2px solid black;
 }

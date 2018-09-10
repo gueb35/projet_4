@@ -37,10 +37,21 @@ function sendText($resultat){//permet d'envoyer un épisode en bdd
     // }
 }
 /***************************/
+function posts()//fonction pour afficher tous les épisodes
+{
+    $postManager = new PostManager();// Création d'un objet(instance)
+    // var_dump($posts);die;
+    $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    // var_dump($posts);die;
+
+    require('../view/frontend/readEpisodesHomeView.php');
+}
+/***************************/
 function post($id)//fonction pour afficher l'épisode
 {
     $postManager = new PostManager();// Création d'un objet(instance)
     $post = $postManager->getPost($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    // var_dump($post);die;
     $previousPostId = $postManager->getPostInferior($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $nextPostId = $postManager->getPostSuperior($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 

@@ -33,6 +33,9 @@ try{//on essaie de faire des choses
         }
 
         //accède aux épisodes depuis le lien du menu de navigation(accès de base)
+        else if($_GET['action'] == 'accessEpisodes'){
+            posts();
+        }
         else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
             post($_GET['id']);//permet d'afficher le premier épisode (id=1) ds la zone de lecture
         }
