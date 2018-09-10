@@ -29,12 +29,8 @@
                         <input type="submit" />
                     </div>
             </form>
-            <form action="index.php?action=accessEpisodeInferior&amp;id=<?= $post['id'] ?>" method="post">
-                <input type="submit" value="épisode précédent"/>
-            </form>
-            <form action="index.php?action=accessEpisodeSuperior&amp;id=<?= $post['id'] ?>" method="post">
-                <input type="submit" value="épisode suivant"/>
-            </form>
+            <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
+            <a href="index.php?action=accessEpisode&amp;id=<?= $nextPostId ?>">épisode suivant</a>
         </div>
     </div>
 

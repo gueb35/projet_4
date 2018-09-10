@@ -35,13 +35,6 @@ try{//on essaie de faire des choses
         //accède aux épisodes depuis le lien du menu de navigation(accès de base)
         else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
             post($_GET['id']);//permet d'afficher le premier épisode (id=1) ds la zone de lecture
-        }        
-        else if(($_GET['action'] == 'accessEpisodeInferior') && ($_GET['id'] > '0')){
-            postInferior($_GET['id']);//permet d'afficher le précédent épisode ds la zone de lecture
-        }
-        else if(($_GET['action'] == 'accessEpisodeSuperior') && ($_GET['id'] > '0')){
-            // var_dump($post);die;
-            postSuperior($_GET['id']);//permet d'afficher le prochain épisode ds la zone de lecture
         }
 
         else if (($_GET['action'] == 'addComment') && ($_GET['id'] > '0')) {//permet d'envoyer un commentaire
@@ -63,7 +56,7 @@ try{//on essaie de faire des choses
         else if($_GET['action'] == 'updateText'){
             if(!empty($_POST['updateNumber']) && !empty($_POST['updateResultat'])){//permet de remplacer un épisode
                 if($_POST['updateNumber'] > '0'){
-                    updatepost($_POST['updateNumber']);
+                    updatepost($_POST['updateNumber'], $_POST['updateResultat']);
                 }else {
                     throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
                 }

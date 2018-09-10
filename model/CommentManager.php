@@ -23,24 +23,6 @@ class CommentManager extends Manager
 
         return $comments;
     }
-    public function getCommentsInferior($postId)//récupère les commentaires associés à l'épisode suivant
-    {
-        // var_dump($postId);die;
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, post_id, author, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE post_id < ? ORDER BY creation_date DESC');
-        $comments->execute(array($postId));
-        // var_dump($comments);die;
-        return $comments;
-    }  
-    public function getCommentsSuperior($postId)//récupère les commentaires associés à l'épisode suivant
-    {
-        // var_dump($postId);die;
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, post_id, author, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE post_id > ? ORDER BY creation_date DESC');
-        $comments->execute(array($postId));
-        // var_dump($comments);die;
-        return $comments;
-    }  
     public function deleteComment($postId){//efface les commentaires associés à un épisode
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM comment_space WHERE post_id = ?');

@@ -27,21 +27,27 @@ class PostManager extends Manager
     public function getPostInferior($id)//récupère l'épisode précédent
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT * FROM author WHERE id < ? ORDER BY id DESC LIMIT 1');
+        $req = $db->prepare('SELECT id FROM author WHERE id < ? ORDER BY id DESC LIMIT 1');
         $req->execute(array($id));
-        $post = $req->fetch();
+        $postId = $req->fetch();
     
-        return $post;
+        return $postId['id'];
     }  
     public function getPostSuperior($id)//récupère l'épisode suivant
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT * FROM author WHERE id > ? LIMIT 1');
+        $req = $db->prepare('SELECT id FROM author WHERE id > ? LIMIT 1');
         $req->execute(array($id));
-        $post = $req->fetch();
+        $postId = $req->fetch();
         
-        return $post;
-    }       
+        return $postId['id'];
+    }  
+    public function updatePost ($id, $resultat){
+        var_dump($id, $resultat);die;
+        $db = $this->dbConnect();
+        $update = $db->prepare('UPDATE author SET resultat = $resultat WHERE id = $id');
+        $update->execute(array($id));
+    }     
     public function deletePost($id){
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM author WHERE id = ? LIMIT 1');
