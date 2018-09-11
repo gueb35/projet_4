@@ -19,7 +19,6 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
         $posts = $db->query('SELECT id,resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');
-        // var_dump($posts);die;
     
         return $posts;    
     }
@@ -51,10 +50,12 @@ class PostManager extends Manager
         return $postId['id'];
     }  
     public function updatePost ($id, $resultat){
-        var_dump($id, $resultat);die;
-        $db = $this->dbConnect();
-        $update = $db->prepare('UPDATE author SET resultat = $resultat WHERE id = $id');
-        $update->execute(array($id));
+        $db = $this->dbConnect($id);
+        $update = $db->prepare('UPDATE author SET resultat = :newResultat WHERE id = :newId');
+        $update->execute(array(
+            'newResultat' => $resultat,
+            'newId' => $id
+        ));
     }     
     public function deletePost($id){
         $db = $this->dbConnect();
@@ -62,20 +63,3 @@ class PostManager extends Manager
         $delete->execute(array($id));
     }
 }
-// public function getPosts()//récupère tous les épisodes
-// {
-//     $db = $this->dbConnect();
-//     $req = $db->query('SELECT id, author, title, content, FROM author ORDER BY id');
-
-//     return $req;
-// }
-
-// public function getPost($postId)//récupère le billet selectionné
-// {
-//     $db = $this->dbConnect();
-//     $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
-//     $req->execute(array($postId));
-//     $post = $req->fetch();
-
-//     return $post;
-// }

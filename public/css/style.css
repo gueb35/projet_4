@@ -23,6 +23,12 @@ h1{
 .boutonAccesWysiwyg{
     padding-top: 20px;
 }
+/***************************************/
+.separationPostAdministrator{
+    width: 55%;
+    margin: auto;
+    border:2px solid black;
+}
 /********page wysiwygInterface**********/
 .titreWysiwyg{
     padding-top: 40px;
