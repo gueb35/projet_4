@@ -62,4 +62,5 @@ class PostManager extends Manager
         $delete = $db->prepare('DELETE FROM author WHERE id = ? LIMIT 1');
         $delete->execute(array($id));
     }
+    
 }
