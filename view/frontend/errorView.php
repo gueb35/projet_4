@@ -1,3 +1,5 @@
+<?php $title = 'Page d\'erreur !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
+
 <?php ob_start(); ?>
 
 <div class="errorMessage">

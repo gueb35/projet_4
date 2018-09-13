@@ -1,5 +1,7 @@
 <!--création du routeur
 l'ensemble de ces conditions permet d'appeler le bon controleur-->
+<?php define("PREFIXE", "115599"); ?>
+<?php define("SUFFIXE", "D5ZC4Z"); ?>
 <?php
 
 require('../controller/frontend.php');
@@ -12,7 +14,7 @@ try{//on essaie de faire des choses
         
         else if($_GET['action'] == 'identification'){//si le paramètre "action" présent ds l'url est identification
             if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
-                if(($_POST['login'] == 'Jean_Forteroche') && ($_POST['password'] == 'Alaska')){//vérifie si le login et le password sont correct
+                if(($_POST['login'] == 'Jean_Forteroche') && ((PREFIXE.hash("sha256",$_POST['password']).SUFFIXE) == '115599c17ac113230f5f31c4a53f58d0f24e8199dce328ae69acb0839e9cb224873a16D5ZC4Z')){//vérifie si le login et le password sont correct
                     postsAdministrator();
                 }else{
                     throw new Exception('Le login ou le mot de passe sont incorrect !');

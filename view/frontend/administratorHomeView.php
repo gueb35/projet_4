@@ -1,9 +1,11 @@
 <?php $title = 'Bienvenue sur votre interface d\'administration Mr Forteroche !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
+
     <div class="text-center"> 
         <h1 class="titreWysiwyg">Que l'inspiration soit avec vous !</h1>
     </div>
+
 
     <div class="separationPostAdministrator"></div>
 
