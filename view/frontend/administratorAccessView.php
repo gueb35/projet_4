@@ -8,7 +8,7 @@
         <form action="./index.php?action=identification" method="post">
             <div>
                 <label for="login">Pseudo :</label><br />
-                <input type="text" id="login" name="login" />
+                <input type="text" id="login" name="login" autocomplete="off" />
             </div>
             <div>
                 <label for="password">Mot de passe :</label><br />

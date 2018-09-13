@@ -28,10 +28,12 @@
         while ($post = $posts->fetch())
         {
         ?>
-            <p><?= ($post['short_post']) ?><a href="index.php?action=accessEpisode&amp;id=<?= ($post['id']) ?>">...Lire la suite</a></p>
-            <a href="index.php?action=updateText&amp;id=<?= ($post['id']) ?>">Modifier cet épisode !</a>
-            <a href="index.php?action=deletePost&amp;id=<?= ($post['id']) ?>">Supprimer cet épisode !</a>
-            <div class="separationPost"></div>
+            <div class="readEpisodesPagePost">
+                <p><?= ($post['short_post']) ?><a href="index.php?action=accessEpisode&amp;id=<?= ($post['id']) ?>">...Lire la suite</a></p>
+                <a href="index.php?action=updateText&amp;id=<?= ($post['id']) ?>">Modifier cet épisode !</a>
+                <a href="index.php?action=deletePost&amp;id=<?= ($post['id']) ?>">Supprimer cet épisode !</a>
+                <div class="separationPost"></div>
+            </div>
         <?php
         }
         ?>

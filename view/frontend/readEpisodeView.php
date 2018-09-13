@@ -10,6 +10,8 @@
             <p>
                 <?= ($post['resultat']) ?>
             </p>
+            <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
+            <a href="index.php?action=accessEpisode&amp;id=<?= $nextPostId ?>">épisode suivant</a>
         </div>
         <div class="col-md-offset-1 col-md-3">
             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
@@ -26,23 +28,20 @@
                         <input type="submit" />
                     </div>
             </form>
-            <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
-            <a href="index.php?action=accessEpisode&amp;id=<?= $nextPostId ?>">épisode suivant</a>
+            <h2>Commentaires</h2>
+
+            <?php
+            while ($comment = $comments->fetch())
+            {
+            ?>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
-
-    <h2>Commentaires</h2>
-
-    <?php
-    while ($comment = $comments->fetch())
-    {
-    ?>
-        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    <?php
-    }
-    ?>
 
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
