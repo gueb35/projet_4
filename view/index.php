@@ -8,7 +8,11 @@ require('../controller/frontend.php');
 
 try{//on essaie de faire des choses
     if(isset($_GET['action'])){//si le paramètre "action" est présent ds l'url
-        if($_GET['action'] == 'accessAdministrator'){
+        if($_GET['action'] == ''){
+            throw new Exception('C\'est pas bien de toucher aux paramètres de l\'URL !');
+        }
+
+        else if($_GET['action'] == 'accessAdministrator'){
             accessAdministrator();//envoie à la vue de la page d'identification de l'administrateur
         }
         
@@ -84,8 +88,10 @@ try{//on essaie de faire des choses
 
         else if(($_GET['action'] == 'deletePost') && ($_GET['id'] > '0')){//permet la suppression d'un épisode
                     deletePost($_GET['id']);
-        }else {
-            throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
+        }
+
+        else{
+            throw new Exception('Le paramètre action ne correspond à aucun paramètre attendu !');
         }
     }
     else{
