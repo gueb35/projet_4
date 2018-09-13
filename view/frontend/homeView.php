@@ -1,7 +1,7 @@
 <?php $title = 'Bienvenue sur la page d\'accueil !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
-    <div class="text-center"> 
+    <div class="title"> 
         <h1>Bienvenue sur mon site!</h1>
     
     <p>Pour ce nouveau roman, j'ai décidé de vous le faire découvrir par épisode directement sur ce site.<br/></p>

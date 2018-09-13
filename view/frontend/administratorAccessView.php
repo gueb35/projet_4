@@ -1,7 +1,7 @@
 <?php $title = 'Page d\'identification'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
-    <div class="text-center"> 
+    <div class="title"> 
         <h1>Identification de l'administrateur</h1>
 
     

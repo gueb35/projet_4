@@ -1,10 +1,15 @@
 /************page d'accueil**************/
 body{
     background-image: url("../../public/images/alaska-68126_1920.jpg");
+    height: 100%;
 }
 h1{
     padding-top: 50px;
 }
+.title{
+    text-align: center;
+}
+/*************homeView.php**********/
 .episode{
     width: 280px;
     height: 400px;
@@ -19,7 +24,7 @@ h1{
 .auteur_couverture{
     padding-top: 180px;
 }
-/***************page d'identification de l'administrateur***************/
+/***************administratorAccessView.php***************/
 .boutonAccesWysiwyg{
     padding-top: 20px;
 }
@@ -62,7 +67,7 @@ h1{
 .readEpisodePage{
     width: 100%;
 }
-/************page de lecture des épisodes tronqués : readEpisodeHomeView.php************/
+/************page de lecture des épisodes tronqués : readEpisodesHomeView.php************/
 .readEpisodesPage{
     width: 55%;
     margin: auto;
@@ -72,4 +77,43 @@ h1{
     width: 100%;
     margin: auto;
     border:2px solid black;
+}
+
+/****************version ipad pro******************/
+@media all and (min-width: 1025px){
+    body{
+        height: 700px;
+    }
+} 
+
+/***********version ipad******************/
+@media all and (min-width: 768px) and (max-width: 1024px){
+    .titleHomeView{
+        margin-top: 100px;
+        text-align: center;
+    }
+    .episode{
+        margin-top: 100px;
+    }
+    .readEpisodePage{
+        margin-left: 100px;
+    }
+} 
+/***********version ipad******************/
+/* @media all and (min-width: 481px) and (max-width: 767px){
+    .readEpisodePage{
+        margin-left: 20px;
+    }
+}   */
+/***********version smartphone**************/
+@media all and (max-width: 480px){
+    .title{
+        margin-top: 100px;
+    }
+    .readEpisodesPage{
+        width: 80%;
+    }
+    .whiteFont{
+        color: white;
+    }
 }
