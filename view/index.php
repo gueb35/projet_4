@@ -12,10 +12,12 @@ try{//on essaie de faire des choses
             throw new Exception('C\'est pas bien de toucher aux paramètres de l\'URL !');
         }
 
+
         else if($_GET['action'] == 'accessAdministrator'){
             accessAdministrator();//envoie à la vue de la page d'identification de l'administrateur
         }
         
+
         else if($_GET['action'] == 'identification'){//si le paramètre "action" présent ds l'url est identification
             if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
                 if(($_POST['login'] == 'Jean_Forteroche') && ((PREFIXE.hash("sha256",$_POST['password']).SUFFIXE) == '115599c17ac113230f5f31c4a53f58d0f24e8199dce328ae69acb0839e9cb224873a16D5ZC4Z')){//vérifie si le login et le password sont correct
@@ -35,20 +37,29 @@ try{//on essaie de faire des choses
             }else{
                 throw new Exception('Il n\'y a pas de texte dans la zone de rédaction des épisode !');
             }
-            
         }
 
 
         //accède aux épisodes depuis le lien du menu de navigation(accès de base)
         else if($_GET['action'] == 'accessEpisodes'){
-            posts();
+            if( $_GET['id'] == null){//si un id n'est pas présent
+                posts();       
+            }else {
+                // Autre exception
+                throw new Exception('C\'est vraiment pas bien de toucher aux paramètres de l\'URL !'); 
+            }
         }
-        else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] > '0')){//récupère un épisode et envoie à la vue ou on peut lire les épisodes
-            post($_GET['id']);//permet d'afficher le premier épisode (id=1) ds la zone de lecture
-        }
-        else if(($_GET['action'] == 'accessEpisode') && ($_GET['id'] == '')){
-            // Autre exception
-            throw new Exception('Il n\'y a pas encore d\'épisode suivant.Patience, ça arrive !');
+        //accède à un épisode et envoie à la vue ou on peut lire l'épisode
+        else if($_GET['action'] == 'accessEpisode'){
+            if(isset($_GET['id']) && $_GET['id'] > '0'){  
+                post($_GET['id']);
+            }else if(isset($_GET['id']) && $_GET['id'] == ''){
+                // Autre exception
+                throw new Exception('Il n\'y a pas encore d\'épisode suivant.Patience, ça arrive !');
+            }else{
+                // Autre exception
+                throw new Exception('C\'est vraiment vraiment pas bien de toucher aux paramètres de l\'URL !');
+            }
         }
 
 
@@ -69,27 +80,42 @@ try{//on essaie de faire des choses
         }
 
 
-        else if(($_GET['action'] == 'updateText') && ($_GET['id'] > '0')){
-            accessWysiwyg($_GET['id']);
+        else if($_GET['action'] == 'updateText'){
+            if(isset($_GET['id']) && $_GET['id'] > '0'){
+                accessWysiwyg($_GET['id']);
+            }else{
+                // Autre exception
+                throw new Exception('Toucher aux paramètres de l\'URL c\'est mal !');
+            }
         }
 
-        else if(($_GET['action'] == 'updatePost') && ($_GET['id'] > '0')){
-            if(!empty($_POST['updateResultat'])){//permet de remplacer un épisode
-                if($_GET['id'] > '0'){
-                    updatepost($_GET['id'], $_POST['updateResultat']);
+
+        else if($_GET['action'] == 'updatePost'){
+            if(isset($_GET['id']) && $_GET['id'] > '0'){
+                if(!empty($_POST['updateResultat'])){//permet de remplacer un épisode
+                    if($_GET['id'] > '0'){
+                        updatepost($_GET['id'], $_POST['updateResultat']);
+                    }else {
+                        throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
+                    }
                 }else {
-                    throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
-                }
+                    throw new Exception('Vous n\'avez pas mis de texte de remplacement !');
+                }  
             }else {
-                throw new Exception('Vous n\'avez pas mis de texte de remplacement !');
+                throw new Exception('Toucher aux paramètres de l\'URL c\'est vraiment mal !');
             }            
         }
 
 
-        else if(($_GET['action'] == 'deletePost') && ($_GET['id'] > '0')){//permet la suppression d'un épisode
+        else if($_GET['action'] == 'deletePost'){//permet la suppression d'un épisode
+            if(isset($_GET['id']) && $_GET['id'] > '0'){
                     deletePost($_GET['id']);
+            }else {
+                throw new Exception('Toucher aux paramètres de l\'URL c\'est vraiment très mal !');
+            }
         }
 
+        
         else{
             throw new Exception('Le paramètre action ne correspond à aucun paramètre attendu !');
         }
