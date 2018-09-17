@@ -80,11 +80,10 @@ function addComment($postId, $author, $comment)//fonction qui permet d'envoyer u
     }
 }
 /***************************/
-function moderateComment($id)
+function moderateComment($commentId,$id)
 {
-    var_dump($id);die;
-    $commentManager = new CommentManager();
-    $postManager->moderate($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $commentManager = new CommentManager();// Création d'un objet(instance)
+    $commentManager->moderate($commentId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 }
 /***************************/
 function accessWysiwyg($id)

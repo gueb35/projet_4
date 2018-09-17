@@ -81,9 +81,9 @@ try{//on essaie de faire des choses
 
 
         else if($_GET['action'] == 'moderate'){
-            var_dump($_GET['id']);die;
-            if(isset($_GET['id']) && $_GET['id'] > '0'){
-                moderateComment($_GET['id']);
+            if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0')){
+                moderateComment($_GET['id'], $_GET['postId']);
+                post($_GET['postId']);
             }else{
                 // Autre exception
                 throw new Exception('Toucher aux paramètres de l\'URL c\'est pas gentil ! :-)');
