@@ -80,6 +80,16 @@ try{//on essaie de faire des choses
         }
 
 
+        else if($_GET['action'] == 'moderate'){
+            var_dump($_GET['id']);die;
+            if(isset($_GET['id']) && $_GET['id'] > '0'){
+                moderateComment($_GET['id']);
+            }else{
+                // Autre exception
+                throw new Exception('Toucher aux paramètres de l\'URL c\'est pas gentil ! :-)');
+            }
+        }
+
         else if($_GET['action'] == 'updateText'){
             if(isset($_GET['id']) && $_GET['id'] > '0'){
                 accessWysiwyg($_GET['id']);
