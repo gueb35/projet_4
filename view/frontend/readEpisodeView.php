@@ -37,6 +37,7 @@
             ?>
                 <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
                 <p class="whiteFont"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                <a href="index.php?action=moderate&amp;id=<?= $comment['id'] ?>">Signaler ce commentaire </a>
             <?php
             }
             ?>
