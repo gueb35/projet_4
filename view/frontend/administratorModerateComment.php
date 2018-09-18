@@ -13,6 +13,8 @@
                 <th>Nom</th>
                 <th>Date</th>
                 <th>Commentaire</th>
+                <th>Modéré le commentaire</th>
+                <th>Mode du commentaire</th>
             </tr>
             <?php while ($comment = $commentsModerate->fetch())
             {
@@ -22,6 +24,8 @@
                 <td><?= $comment['authorComMod'] ?></td>
                 <td><?= $comment['creation_date_fr'] ?></td>
                 <td><?= $comment['commentModerate'] ?></td>
+                <td><a href="index.php?action=moderateComment&amp;id=<?= ($comment['idComMod']) ?>" class="linkModCom">Modérer !</a></td>
+                <td><?= $comment['comMod'] ?></td>
             </tr>
             <?php
             }

@@ -79,11 +79,27 @@ try{//on essaie de faire des choses
             }
         }
 
-        else if($_GET['action'] == 'moderateCommentView'){
-            accessModerateCommentView();
+
+        else if($_GET['action'] == 'moderateCommentView'){//accède à la vue des comments signalés
+            if( $_GET['id'] == null){//si un id n'est pas présent
+                accessModerateCommentView();       
+            }else {
+                // Autre exception
+                throw new Exception('C\'est vraiment pas gentil bien de toucher aux paramètres de l\'URL !'); 
+            }
         }
 
-        else if($_GET['action'] == 'moderated'){
+
+        else if(($_GET['action'] == 'moderateComment') && ($_GET['id'] > '0')){//accède à la vue des comments signalés
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                pushModerateComment($_GET['id']);
+            }else {
+            // Autre exception
+            throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+
+        else if($_GET['action'] == 'moderated'){//permet de signalé un commentaire en entrant "ok" en bdd
             if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0')){
                 moderatedComment($_GET['id'], $_GET['postId']);
                 post($_GET['postId']);

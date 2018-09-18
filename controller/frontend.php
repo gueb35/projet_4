@@ -88,6 +88,12 @@ function moderatedComment($commentId,$id)
 {
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $commentManager->moderated($commentId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+
+}
+/***************************/
+function pushModerateComment($id){
+    $commentManager = new CommentManager();// Création d'un objet(instance)
+    $commentManager->pushModerated($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 }
 /***************************/
 function accessModerateCommentView()

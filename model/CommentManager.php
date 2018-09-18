@@ -27,20 +27,28 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         $commentsModerate = $db->prepare('SELECT co.comment AS commentModerate, co.author 
-        AS authorComMod, au.title AS titleComMod,
+        AS authorComMod, co.id AS idComMod, co.moderated AS comMod, au.title AS titleComMod,
         DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
         FROM comment_space AS co
         INNER JOIN author AS au
         ON co.post_id = au.id 
-        WHERE co.moderated = "ok" ORDER BY creation_date DESC');
+        WHERE co.moderated = "signalé" || co.moderated = "modéré" ORDER BY creation_date DESC');
         $commentsModerate->execute(array());
 
         return $commentsModerate;
     }
+    public function pushModerated($id)//fonction qui fait une requete pour modérer un commentaire
+    {
+        $db = $this->dbConnect();
+        $moderate = $db->prepare('UPDATE comment_space SET moderated = "moderé" WHERE id = :newId');
+        $moderate->execute(array(
+            'newId' => $id
+            ));
+    }
     public function moderated($id)//fonction qui fait une requète pour signaler un commentaire
     {
         $db = $this->dbConnect();
-        $moderate = $db->prepare('UPDATE comment_space SET moderated = "ok" WHERE id = :newId');
+        $moderate = $db->prepare('UPDATE comment_space SET moderated = "signalé" WHERE id = :newId');
         $moderate->execute(array(
             'newId' => $id
             ));
