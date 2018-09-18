@@ -19,6 +19,10 @@ function accessAdministrator()
 {
     require('../view/frontend/administratorAccessView.php');
 }
+function accessAdministratorModerateComment()
+{
+    require('../view/frontend/administratorModerateComment.php');
+}
 function accessEpisode(){
     require('../view/frontend/readEpisodeView.php');
 }
@@ -62,6 +66,8 @@ function post($id)//fonction pour afficher l'épisode et ses commentaires
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $comments = $commentManager->getComments($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète ds CommentManager.php pour afficher les commentaires associés au billet selectionné
+    // $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+
 
     require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
 }
@@ -94,6 +100,8 @@ function moderatedComment($commentId,$id)
 function pushModerateComment($id){
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $commentManager->pushModerated($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    require('../view/frontend/administratorModerateComment.php');
 }
 /***************************/
 function accessModerateCommentView()
