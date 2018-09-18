@@ -79,6 +79,9 @@ try{//on essaie de faire des choses
             }
         }
 
+        else if($_GET['action'] == 'moderateCommentView'){
+            accessModerateCommentView();
+        }
 
         else if($_GET['action'] == 'moderated'){
             if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0')){

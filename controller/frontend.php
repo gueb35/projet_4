@@ -19,6 +19,9 @@ function accessAdministrator()
 {
     require('../view/frontend/administratorAccessView.php');
 }
+function accessModerateCommentView(){
+    require('../view/frontend/administratorModerateComment.php');
+}
 function accessEpisode(){
     require('../view/frontend/readEpisodeView.php');
 }
