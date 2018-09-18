@@ -23,6 +23,14 @@ class CommentManager extends Manager
 
         return $comments;
     }
+    public function accessModerateCommentView()
+    {
+        $db = $this->dbConnect();
+        $commentsModerate = $db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE moderated = "ok" ORDER BY creation_date DESC');
+        $commentsModerate->execute(array());
+
+        return $commentsModerate;
+    }
     public function moderated($id)//fonction qui fait une requète pour signaler un commentaire
     {
         $db = $this->dbConnect();

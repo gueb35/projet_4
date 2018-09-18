@@ -19,9 +19,6 @@ function accessAdministrator()
 {
     require('../view/frontend/administratorAccessView.php');
 }
-function accessModerateCommentView(){
-    require('../view/frontend/administratorModerateComment.php');
-}
 function accessEpisode(){
     require('../view/frontend/readEpisodeView.php');
 }
@@ -91,6 +88,14 @@ function moderatedComment($commentId,$id)
 {
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $commentManager->moderated($commentId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+}
+/***************************/
+function accessModerateCommentView()
+{
+    $commentManager = new CommentManager();// Création d'un objet(instance)
+    $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+
+    require('../view/frontend/administratorModerateComment.php');
 }
 /***************************/
 function accessWysiwyg($id)
