@@ -30,10 +30,10 @@ try{//on essaie de faire des choses
             }
         } 
 
-
+        //envoie le titre et le texte en bdd
         else if($_GET['action'] == 'sendText'){
-            if(!empty($_POST['resultat'])){
-                sendText($_POST['resultat']);//envoie l'épisode en bdd
+            if(!empty($_POST['resultat']) && !empty($_POST['title'])){
+                sendText($_POST['resultat'], $_POST['title']);//envoie l'épisode en bdd
             }else{
                 throw new Exception('Il n\'y a pas de texte dans la zone de rédaction des épisode !');
             }
@@ -80,9 +80,9 @@ try{//on essaie de faire des choses
         }
 
 
-        else if($_GET['action'] == 'moderate'){
+        else if($_GET['action'] == 'moderated'){
             if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0')){
-                moderateComment($_GET['id'], $_GET['postId']);
+                moderatedComment($_GET['id'], $_GET['postId']);
                 post($_GET['postId']);
             }else{
                 // Autre exception
@@ -102,9 +102,9 @@ try{//on essaie de faire des choses
 
         else if($_GET['action'] == 'updatePost'){
             if(isset($_GET['id']) && $_GET['id'] > '0'){
-                if(!empty($_POST['updateResultat'])){//permet de remplacer un épisode
+                if(!empty($_POST['updateResultat']) && !empty($_POST['updateTitle'])){//permet de remplacer un épisode
                     if($_GET['id'] > '0'){
-                        updatepost($_GET['id'], $_POST['updateResultat']);
+                        updatepost($_GET['id'], $_POST['updateResultat'], $_POST['updateTitle']);
                     }else {
                         throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
                     }

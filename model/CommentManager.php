@@ -23,10 +23,10 @@ class CommentManager extends Manager
 
         return $comments;
     }
-    public function moderate($id)//fonction qui fait une requète pour signaler un commentaire
+    public function moderated($id)//fonction qui fait une requète pour signaler un commentaire
     {
         $db = $this->dbConnect();
-        $moderate = $db->prepare('UPDATE comment_space SET moderate = "ok" WHERE id = :newId');
+        $moderate = $db->prepare('UPDATE comment_space SET moderated = "ok" WHERE id = :newId');
         $moderate->execute(array(
             'newId' => $id
             ));

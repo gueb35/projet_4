@@ -10,11 +10,12 @@
 <!-- UPDATE -->
     <h3 class="text-center">Partie réservée au remplacement ou à la modification d'un épisode :</h3>
         <p class="text-center">
-            Pour ce faire, écrivez ou modifiez votre texte dans la zone prévu à cet effet,
-            mettez-le forme puis cliquez sur le bouton "Modifiez votre épisode".
+            Pour ce faire, écrivez ou modifiez votre titre et votre texte dans les zones prévues à ces effets,
+            mettez-les forme puis cliquez sur le bouton "Modifiez votre épisode".
         </p>
     <div class="update">
             <form action="./index.php?action=updatePost&amp;id=<?= ($post['id']) ?>" method="post">
+                <textarea id="updateTitle" name="updateTitle"><?= $post['title'] ?></textarea>
                 <textarea id="updateResultat" name="updateResultat"><?= $post['resultat'] ?></textarea>
                 <div class="text-center">
                     <input type="submit" value="Modifiez votre épisode"/>

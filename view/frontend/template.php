@@ -10,12 +10,26 @@
         <script src="../public/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
             tinymce.init({
+                selector: '#title',
+                language: 'fr_FR',
+                language_url: '../public/js/tinymce/langs/fr_FR.js'
+            });
+        </script>       
+        <script type="text/javascript">
+            tinymce.init({
+                selector: '#updateTitle',
+                language: 'fr_FR',
+                language_url: '../public/js/tinymce/langs/fr_FR.js'
+            });
+        </script> 
+        <script type="text/javascript">
+            tinymce.init({
                 selector: '#resultat',
                 language: 'fr_FR',
                 language_url: '../public/js/tinymce/langs/fr_FR.js'
             });
         </script>
-                <script type="text/javascript">
+        <script type="text/javascript">
             tinymce.init({
                 selector: '#updateResultat',
                 language: 'fr_FR',

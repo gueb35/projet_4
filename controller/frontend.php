@@ -23,9 +23,9 @@ function accessEpisode(){
     require('../view/frontend/readEpisodeView.php');
 }
 /*************************/
-function sendText($resultat){//permet d'envoyer un épisode en bdd
+function sendText($resultat, $title){//permet d'envoyer un épisode en bdd
     $postManager = new PostManager();
-    $affectedLines = $postManager->postText($resultat);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $postManager->postText($resultat, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet)
 
     require('../view/frontend/administratorHomeView.php');
@@ -36,12 +36,16 @@ function postsAdministrator()//fonction pour afficher tous les épisodes sur la 
     $postManager = new PostManager();// Création d'un objet(instance)
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet)
 
+    // $commentManager = new CommentManager();// Création d'un objet(instance)
+    // $commentModerate = $commentManager->getCommentModerate($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+
     require('../view/frontend/administratorHomeView.php');
 }
 /***************************/
 function posts()//fonction pour afficher tous les épisodes sur la page d'accueil de l'espace lecture
 {
     $postManager = new PostManager();// Création d'un objet(instance)
+    // $postTitle = $postManager->postText($resultat, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
     require('../view/frontend/readEpisodesHomeView.php');
@@ -80,10 +84,10 @@ function addComment($postId, $author, $comment)//fonction qui permet d'envoyer u
     }
 }
 /***************************/
-function moderateComment($commentId,$id)
+function moderatedComment($commentId,$id)
 {
     $commentManager = new CommentManager();// Création d'un objet(instance)
-    $commentManager->moderate($commentId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $commentManager->moderated($commentId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 }
 /***************************/
 function accessWysiwyg($id)
@@ -94,10 +98,10 @@ function accessWysiwyg($id)
     require('../view/frontend/wysiwygInterface.php');
 }
 /***************************/
-function updatePost ($id, $resultat)
+function updatePost ($id, $resultat, $updateTitle)
 {
     $postManager = new PostManager();// Création d'un objet(instance)
-    $postManager->updatePost($id, $resultat);//invoquer la méthode pour modifier un épisode
+    $postManager->updatePost($id, $resultat, $updateTitle);//invoquer la méthode pour modifier un épisode
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
     

@@ -8,6 +8,7 @@
     <div class="readEpisodePage row">
         <div class="episode1andmore col-xs-offset-1 col-xs-11 col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-5">
             <p>
+                <?= ($post['title']) ?>
                 <?= ($post['resultat']) ?>
             </p>
             <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
@@ -37,7 +38,7 @@
             ?>
                 <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
                 <p class="whiteFont"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                <a href="index.php?action=moderate&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
+                <a href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
             <?php
             }
             ?>

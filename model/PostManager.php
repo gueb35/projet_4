@@ -7,25 +7,25 @@ require_once('../model/Manager.php');//fait appel au fichier "Manager" pour la c
 
 class PostManager extends Manager
 {
-    public function postText($resultat)//fonction qui fait une requète pour insérer des épisodes en bdd
+    public function postText($resultat, $title)//fonction qui fait une requète pour insérer des épisodes en bdd
     {
         $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO author(resultat) VALUES(?)');
-        $affectedLines = $post->execute(array($resultat));
+        $post = $db->prepare('INSERT INTO author(resultat, title) VALUES(?, ?)');
+        $affectedLines = $post->execute(array($resultat, $title));
 
         return $affectedLines;
     }
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $posts = $db->query('SELECT id,resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');
+        $posts = $db->query('SELECT id, title, resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');
     
         return $posts;    
     }
     public function getPost($id)//récupère un épisode
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT id, resultat FROM author WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, resultat FROM author WHERE id = ?');
         $req->execute(array($id));
         $post = $req->fetch();
     
@@ -49,11 +49,12 @@ class PostManager extends Manager
         
         return $postId['id'];
     }  
-    public function updatePost ($id, $resultat){
+    public function updatePost ($id, $resultat, $updateTitle){
         $db = $this->dbConnect($id);
-        $update = $db->prepare('UPDATE author SET resultat = :newResultat WHERE id = :newId');
+        $update = $db->prepare('UPDATE author SET resultat = :newResultat, title = :newTitle WHERE id = :newId');
         $update->execute(array(
             'newResultat' => $resultat,
+            'newTitle' => $updateTitle,
             'newId' => $id
         ));
     }     
