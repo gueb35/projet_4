@@ -4,16 +4,30 @@
 
     <h2 class="titlemoderateComment">Tableau des commentaires signalés </h2>
 
-    <?php
-    while ($comment = $commentsModerate->fetch())
-    {
-    ?>
-        <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
-        <p class="whiteFont"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <a href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Modéré ce commentaire !</a>
-    <?php
-    }
-    ?>
+
+
+    <div class="container">
+        <table class="table table-hover">
+            <tr>
+                <th>Titre de l'épisode</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Commentaire</th>
+            </tr>
+            <?php while ($comment = $commentsModerate->fetch())
+            {
+            ?>
+            <tr>
+                <td><?= $comment['titleComMod'] ?></td>
+                <td><?= $comment['authorComMod'] ?></td>
+                <td><?= $comment['creation_date_fr'] ?></td>
+                <td><?= $comment['commentModerate'] ?></td>
+            </tr>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
     
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 

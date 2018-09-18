@@ -15,7 +15,7 @@ class PostManager extends Manager
 
         return $affectedLines;
     }
-    public function getPosts()
+    public function getPosts()//récupère tous les épidodes
     {
         $db = $this->dbConnect();
         $posts = $db->query('SELECT id, title, resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');

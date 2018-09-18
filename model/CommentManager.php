@@ -23,10 +23,16 @@ class CommentManager extends Manager
 
         return $comments;
     }
-    public function accessModerateCommentView()
+    public function accessModerateCommentView()//requète avec jointure entre les 2 tables
     {
         $db = $this->dbConnect();
-        $commentsModerate = $db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE moderated = "ok" ORDER BY creation_date DESC');
+        $commentsModerate = $db->prepare('SELECT co.comment AS commentModerate, co.author 
+        AS authorComMod, au.title AS titleComMod,
+        DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
+        FROM comment_space AS co
+        INNER JOIN author AS au
+        ON co.post_id = au.id 
+        WHERE co.moderated = "ok" ORDER BY creation_date DESC');
         $commentsModerate->execute(array());
 
         return $commentsModerate;
