@@ -101,6 +101,7 @@ function pushModerateComment($id){
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $commentManager->pushModerated($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    
     require('../view/frontend/administratorModerateComment.php');
 }
 /***************************/
@@ -126,6 +127,8 @@ function updatePost ($id, $resultat, $updateTitle)
     $postManager->updatePost($id, $resultat, $updateTitle);//invoquer la méthode pour modifier un épisode
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
+    $commentManager = new CommentManager();
+    $commentManager->deleteComment($id);
     
     require('../view/frontend/administratorHomeView.php');
 }

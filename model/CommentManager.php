@@ -18,7 +18,7 @@ class CommentManager extends Manager
     public function getComments($postId)//fonction qui fait une requète pour récupèrer les commentaires
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, post_id, author, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE post_id = ? ORDER BY creation_date DESC');
+        $comments = $db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM comment_space WHERE post_id = ? ORDER BY creation_date DESC');
         $comments->execute(array($postId));
 
         return $comments;
@@ -40,7 +40,7 @@ class CommentManager extends Manager
     public function pushModerated($id)//fonction qui fait une requete pour modérer un commentaire
     {
         $db = $this->dbConnect();
-        $moderate = $db->prepare('UPDATE comment_space SET moderated = "moderé" WHERE id = :newId');
+        $moderate = $db->prepare('UPDATE comment_space SET moderated = "modéré" WHERE id = :newId');
         $moderate->execute(array(
             'newId' => $id
             ));
