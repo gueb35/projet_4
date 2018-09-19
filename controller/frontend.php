@@ -40,9 +40,6 @@ function postsAdministrator()//fonction pour afficher tous les épisodes sur la 
     $postManager = new PostManager();// Création d'un objet(instance)
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet)
 
-    // $commentManager = new CommentManager();// Création d'un objet(instance)
-    // $commentModerate = $commentManager->getCommentModerate($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-
     require('../view/backend/administratorHomeView.php');
 }
 /***************************/
