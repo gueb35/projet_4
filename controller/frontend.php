@@ -17,11 +17,11 @@ function showHomeView()
 }
 function accessAdministrator()
 {
-    require('../view/frontend/administratorAccessView.php');
+    require('../view/backend/administratorAccessView.php');
 }
 function accessAdministratorModerateComment()
 {
-    require('../view/frontend/administratorModerateComment.php');
+    require('../view/backend/administratorModerateComment.php');
 }
 function accessEpisode(){
     require('../view/frontend/readEpisodeView.php');
@@ -32,7 +32,7 @@ function sendText($resultat, $title){//permet d'envoyer un épisode en bdd
     $postManager->postText($resultat, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet)
 
-    require('../view/frontend/administratorHomeView.php');
+    require('../view/backend/administratorHomeView.php');
 }
 /***************************/
 function postsAdministrator()//fonction pour afficher tous les épisodes sur la page d'accueil de l'espace administrateur
@@ -43,7 +43,7 @@ function postsAdministrator()//fonction pour afficher tous les épisodes sur la 
     // $commentManager = new CommentManager();// Création d'un objet(instance)
     // $commentModerate = $commentManager->getCommentModerate($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
-    require('../view/frontend/administratorHomeView.php');
+    require('../view/backend/administratorHomeView.php');
 }
 /***************************/
 function posts()//fonction pour afficher tous les épisodes sur la page d'accueil de l'espace lecture
@@ -66,8 +66,6 @@ function post($id)//fonction pour afficher l'épisode et ses commentaires
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $comments = $commentManager->getComments($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète ds CommentManager.php pour afficher les commentaires associés au billet selectionné
-    // $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-
 
     require('../view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
 }
@@ -102,7 +100,7 @@ function pushModerateComment($id){
     $commentManager->pushModerated($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     
-    require('../view/frontend/administratorModerateComment.php');
+    require('../view/backend/administratorModerateComment.php');
 }
 /***************************/
 function accessModerateCommentView()
@@ -110,7 +108,7 @@ function accessModerateCommentView()
     $commentManager = new CommentManager();// Création d'un objet(instance)
     $commentsModerate = $commentManager->accessModerateCommentView();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
-    require('../view/frontend/administratorModerateComment.php');
+    require('../view/backend/administratorModerateComment.php');
 }
 /***************************/
 function accessWysiwyg($id)
@@ -118,7 +116,7 @@ function accessWysiwyg($id)
     $postManager = new PostManager();
     $post = $postManager->getPost($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
-    require('../view/frontend/wysiwygInterface.php');
+    require('../view/backend/administratorUpdateView.php');
 }
 /***************************/
 function updatePost ($id, $resultat, $updateTitle)
@@ -130,7 +128,7 @@ function updatePost ($id, $resultat, $updateTitle)
     $commentManager = new CommentManager();
     $commentManager->deleteComment($id);
     
-    require('../view/frontend/administratorHomeView.php');
+    require('../view/backend/administratorHomeView.php');
 }
 /***************************/
 function deletePost($id)
@@ -143,6 +141,6 @@ function deletePost($id)
     $commentManager = new CommentManager();
     $commentManager->deleteComment($id);
 
-    require('../view/frontend/administratorHomeView.php');
+    require('../view/backend/administratorHomeView.php');
 
 }
