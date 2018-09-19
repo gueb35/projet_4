@@ -1,9 +1,9 @@
 <?php $title = 'Bienvenue sur votre interface permettant la modération de commentaires !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
-
-    <h2 class="titlemoderateComment">Tableau des commentaires signalés </h2>
-
+    <div class="titlemoderateComment">
+        <h2 class="titlemoderate">Tableau des commentaires signalés </h2>
+    </div>
 
 
     <div class="container">

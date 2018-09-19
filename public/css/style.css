@@ -114,12 +114,6 @@ h1{
         margin-left: 100px;
     }
 } 
-/***********version ipad******************/
-/* @media all and (min-width: 481px) and (max-width: 767px){
-    .readEpisodePage{
-        margin-left: 20px;
-    }
-}   */
 /***********version smartphone**************/
 @media all and (max-width: 480px){
     .title{
@@ -130,5 +124,14 @@ h1{
     }
     .whiteFont{
         color: white;
+    }
+    .redFont{
+        color: white;
+        text-decoration: underline;
+    }
+    .titlemoderateComment{
+        width: 500px;
+        margin-left: 60px;
+        margin-top: 100px;
     }
 }

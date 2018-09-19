@@ -40,13 +40,13 @@
                 if($comment['moderated'] == "modéré"){
                 ?>
                         <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
-                        <p><strong>Commentaire modéré par l'administrateur</strong></p>
+                        <p class="whiteFont"><strong>Commentaire modéré par l'administrateur</strong></p>
                 <?php
                 }else{
                 ?>
                         <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
                         <p class="whiteFont"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                        <a href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
+                        <a class="redFont" href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
                 <?php
                 }
                 ?>

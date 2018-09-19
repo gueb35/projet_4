@@ -25,7 +25,7 @@
     </div>
 
     <div class="accessModCom">
-        <a href="index.php?action=moderateCommentView" class="linkModCom" title="Cliquez pour voir les commentaires signalés !">Accéder à votre interface de modération de commentaire !</a>
+        <a href="index.php?action=moderateCommentView" class="linkModCom" title="Cliquez pour voir les commentaires signalés !">Accés à votre interface de modération de commentaire !</a>
     </div>
 
     <div class="readEpisodesPage">
