@@ -4,7 +4,7 @@ l'ensemble de ces conditions permet d'appeler le bon controleur-->
 <?php define("SUFFIXE", "D5ZC4Z"); ?>
 <?php
 
-require('controller/frontend.php');//permet d'avoir accès aux fonctions du contrôleur
+require('controller/frontend.php');//permet d'avoir accès
 
 try{//on essaie de faire des choses
     if(isset($_GET['action'])){//si le paramètre "action" est présent ds l'url
@@ -42,10 +42,10 @@ try{//on essaie de faire des choses
 
         //accède aux épisodes depuis le lien du menu de navigation(accès de base)
         else if($_GET['action'] == 'accessEpisodes'){
-                posts();
+                posts();  
         }
 
-        
+
         //accède à un épisode et envoie à la vue ou on peut lire l'épisode
         else if($_GET['action'] == 'accessEpisode'){
             if(isset($_GET['id']) && $_GET['id'] > '0'){  
