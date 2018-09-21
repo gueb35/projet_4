@@ -42,13 +42,10 @@ try{//on essaie de faire des choses
 
         //accède aux épisodes depuis le lien du menu de navigation(accès de base)
         else if($_GET['action'] == 'accessEpisodes'){
-            if( $_GET['id'] == null){//si un id n'est pas présent
-                posts();       
-            }else {
-                // Autre exception
-                throw new Exception('C\'est vraiment pas bien de toucher aux paramètres de l\'URL !'); 
-            }
+                posts();
         }
+
+        
         //accède à un épisode et envoie à la vue ou on peut lire l'épisode
         else if($_GET['action'] == 'accessEpisode'){
             if(isset($_GET['id']) && $_GET['id'] > '0'){  

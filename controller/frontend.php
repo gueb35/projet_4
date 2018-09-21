@@ -67,7 +67,7 @@ function post($id)//fonction pour afficher l'épisode et ses commentaires
 function addComment($postId, $author, $comment)//fonction qui permet d'envoyer un commentaire
 {
     $postManager = new PostManager();// Création d'un objet(instance)
-    $post = $postManager->getPost($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+    $post = $postManager->getPost($postId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
     // elle fait une requète préparé pour afficher le billet selectionné
 
     $commentManager = new CommentManager();// Création d'un objet(instance)
