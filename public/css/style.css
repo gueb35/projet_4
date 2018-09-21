@@ -28,6 +28,10 @@ h1{
 .boutonAccesWysiwyg{
     padding-top: 20px;
 }
+.redFont{
+    color: red;
+    margin-top: 20px;
+}
 /******administratorHomeView.php**********/
 .separationPostAdministrator{
     width: 55%;
@@ -39,10 +43,10 @@ h1{
     margin: auto;
 }
 .accessModCom{
+    width: 28%;
+    margin: auto;
     margin-top: 10px;
     text-align: center;
-}
-.linkModCom{
     padding: 5px;
     border-radius: 4px;
     border: 2px solid black;
@@ -53,7 +57,7 @@ h1{
     margin-top: 50px;
     text-align: center;
 }
-/********page wysiwygInterface**********/
+/********page administratorUpdateView**********/
 .titreWysiwyg{
     padding-top: 40px;
 }
@@ -125,13 +129,13 @@ h1{
     .whiteFont{
         color: white;
     }
-    .redFont{
-        color: white;
-        text-decoration: underline;
-    }
     .titlemoderateComment{
         width: 500px;
         margin-left: 60px;
         margin-top: 100px;
+    }
+    .accessModCom{
+        margin: auto;
+        width: 90%;
     }
 }

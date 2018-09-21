@@ -25,7 +25,7 @@
     </div>
 
     <div class="accessModCom">
-        <a href="index.php?action=moderateCommentView" class="linkModCom" title="Cliquez pour voir les commentaires signalés !">Accés à votre interface de modération de commentaire !</a>
+        <a href="index.php?action=moderateCommentView" class="linkModCom" title="Cliquez pour voir les commentaires signalés !">Accés à votre interface<br/> de modération de commentaire !</a>
     </div>
 
     <div class="readEpisodesPage">
@@ -47,4 +47,4 @@
     
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
-<?php require('template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+<?php require('view/template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->

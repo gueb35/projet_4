@@ -46,7 +46,7 @@
                 ?>
                         <p class="whiteFont"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['creation_date_fr'] ?></p>
                         <p class="whiteFont"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                        <a class="redFont" href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
+                        <a class="whiteFont" href="index.php?action=moderated&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">Signaler ce commentaire </a>
                 <?php
                 }
                 ?>
@@ -59,4 +59,4 @@
 
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
-<?php require('template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+<?php require('view/template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
