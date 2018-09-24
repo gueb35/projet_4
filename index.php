@@ -79,7 +79,7 @@ try{//on essaie de faire des choses
         }
 
 
-        else if($_GET['action'] == 'moderateCommentView'){//accède à la vue des comments signalés
+        else if($_GET['action'] == 'moderateCommentView'){//accède à la vue des commentaires signalés
             if( $_GET['id'] == null){//si un id n'est pas présent
                 accessModerateCommentView();       
             }else {
@@ -89,7 +89,7 @@ try{//on essaie de faire des choses
         }
 
 
-        else if(($_GET['action'] == 'moderateComment') && ($_GET['id'] > '0')){//accède à la vue des comments signalés
+        else if(($_GET['action'] == 'moderateComment') && ($_GET['id'] > '0')){//permet de remplacer "signalé" par "modéré" ds le champ moderate
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 pushModerateComment($_GET['id']);
             }else {
@@ -98,7 +98,7 @@ try{//on essaie de faire des choses
             }
         }
 
-        else if($_GET['action'] == 'moderated'){//permet de signalé un commentaire en entrant "ok" en bdd
+        else if($_GET['action'] == 'moderated'){//permet de signaler un commentaire en entrant "signalé" ds la champ moderate de la bdd
             if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0')){
                 moderatedComment($_GET['id'], $_GET['postId']);
                 post($_GET['postId']);
@@ -108,7 +108,7 @@ try{//on essaie de faire des choses
             }
         }
 
-        else if($_GET['action'] == 'updateText'){
+        else if($_GET['action'] == 'updateText'){//permet d'accéder à l'interface de modification de texte
             if(isset($_GET['id']) && $_GET['id'] > '0'){
                 accessWysiwyg($_GET['id']);
             }else{
@@ -118,7 +118,7 @@ try{//on essaie de faire des choses
         }
 
 
-        else if($_GET['action'] == 'updatePost'){
+        else if($_GET['action'] == 'updatePost'){//permet de modifier le titre et le texte d'un post
             if(isset($_GET['id']) && $_GET['id'] > '0'){
                 if(!empty($_POST['updateResultat']) && !empty($_POST['updateTitle'])){//permet de remplacer un épisode
                     if($_GET['id'] > '0'){
