@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,28 +8,28 @@
         <link rel="stylesheet" href="./public/css/style.css"/>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
         <script src="public/js/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
+        <script>
             tinymce.init({
                 selector: '#title',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
         </script>       
-        <script type="text/javascript">
+        <script>
             tinymce.init({
                 selector: '#updateTitle',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
         </script> 
-        <script type="text/javascript">
+        <script>
             tinymce.init({
                 selector: '#resultat',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
         </script>
-        <script type="text/javascript">
+        <script>
             tinymce.init({
                 selector: '#updateResultat',
                 language: 'fr_FR',
@@ -48,6 +48,7 @@
                         <li><a href="index.php?action=accessEpisodes">Espace lecture</a></li>
                     </ul>
                 </div>
+            </nav>
         </div>
 
         <?= $content ?>    
