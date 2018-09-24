@@ -64,19 +64,17 @@ function post($id)//fonction pour afficher l'épisode et ses commentaires
     require('view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
 }
 /********************************/
-function addComment($postId, $author, $comment)//fonction qui permet d'envoyer un commentaire
+function addComment($postId, $author, $comment)
 {
-    $postManager = new PostManager();// Création d'un objet(instance)
-    $post = $postManager->getPost($postId);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-    // elle fait une requète préparé pour afficher le billet selectionné
+    $postManager = new PostManager();
+    $post = $postManager->getPost($postId);
 
-    $commentManager = new CommentManager();// Création d'un objet(instance)
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
-    //elle fait une requète ds CommentManager pour créer un commentaire
-    if ($affectedLines === false) {
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    if($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
-    else {
+    else{
         header('Location:index.php?action=accessEpisode&id=' . $postId);exit;
     }
 }
