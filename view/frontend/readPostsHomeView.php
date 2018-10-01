@@ -11,7 +11,7 @@
         {
         ?>
             <p><?= ($post['title']) ?> 
-            <p><?= ($post['short_post']) ?><a href="index.php?action=accessEpisode&amp;id=<?= ($post['id']) ?>">...Lire la suite</a></p>
+            <p><?= ($post['short_post']) ?><a href="index.php?action=accessPost&amp;id=<?= ($post['id']) ?>">...Lire la suite</a></p>
             <div class="separationPost"></div>
         <?php
         }

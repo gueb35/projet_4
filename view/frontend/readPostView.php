@@ -11,8 +11,8 @@
                 <?= ($post['title']) ?>
                 <?= ($post['content_post']) ?>
             </p>
-            <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
-            <a href="index.php?action=accessEpisode&amp;id=<?= $nextPostId ?>">épisode suivant</a>
+            <a href="index.php?action=accessPost&amp;id=<?= $previousPostId ?>">épisode précédent</a>
+            <a href="index.php?action=accessPost&amp;id=<?= $nextPostId ?>">épisode suivant</a>
         </div>
         <div class="col-xs-offset-1 col-xs-11 col-sm-offset-1 col-sm-4 col-md-offset-1 col-md-3">
             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
