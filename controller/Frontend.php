@@ -49,7 +49,7 @@ class Frontend
         // $postTitle = $postManager->postText($content_post, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
         $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
-        require('view/frontend/readEpisodesHomeView.php');
+        require('view/frontend/readPostsHomeView.php');
     }
     /***************************/
     public function post($id)//fonction pour afficher l'épisode et ses commentaires
@@ -64,7 +64,7 @@ class Frontend
         $comments = $commentManager->getComments($id);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
         // elle fait une requète ds CommentManager.php pour afficher les commentaires associés au billet selectionné
 
-        require('view/frontend/readEpisodeView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
+        require('view/frontend/readPostView.php');//transmet les données(requete stockées ds des variables) à l'affichage (vue)
     }
     /********************************/
     public function addComment($postId, $author, $comment)
