@@ -1,7 +1,7 @@
 <?php
 
 require('controller/Frontend.php');
-// require('controller/Backend.php');
+require('controller/Backend.php');
 
 define("PREFIXE", "115599");
 define("SUFFIXE", "D5ZC4Z");
@@ -16,14 +16,14 @@ try{//on essaie de faire des choses
             break;
 
             case 'accessAdministrator':
-                $backend = new alban\project_4\controller\Frontend();
+                $backend = new alban\project_4\controller\Backend();
                 $backend->accessAdministrator();//envoie à la vue de la page d'identification de l'administrateur
             break;
 
             case 'identification':
                 if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
                     if(($_POST['login'] == 'Jean_Forteroche') && ((PREFIXE.hash("sha256",$_POST['password']).SUFFIXE) == '115599c17ac113230f5f31c4a53f58d0f24e8199dce328ae69acb0839e9cb224873a16D5ZC4Z')){//vérifie si le login et le password sont correct
-                        $backend = new alban\project_4\controller\Frontend();
+                        $backend = new alban\project_4\controller\Backend();
                         $backend->postsAdministrator();
                     }else{
                         throw new Exception('Le login ou le mot de passe sont incorrect !');
@@ -36,7 +36,7 @@ try{//on essaie de faire des choses
             case 'sendText':
                 if(!empty($_POST['content_post']) && !empty($_POST['title']))
                 {
-                    $backend = new alban\project_4\controller\Frontend();
+                    $backend = new alban\project_4\controller\Backend();
                     $backend->sendText($_POST['content_post'], $_POST['title']);//envoie l'épisode en bdd
                 }else{
                     throw new Exception('Il n\'y a pas de texte dans la zone de rédaction des épisode !');
@@ -85,15 +85,15 @@ try{//on essaie de faire des choses
             break;
 
             case 'moderateCommentView':
-                $backend = new alban\project_4\controller\Frontend();
+                $backend = new alban\project_4\controller\Backend();
                 $backend->accessModerateCommentView();
             break;
 
             case 'moderateComment':
                 if(isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend = new alban\project_4\controller\Frontend();
-                    $backend->pushModerateComment($_GET['id']);
+                    $backend = new alban\project_4\controller\Backend();
+                    $backend->pushModerateComment($_GET['id']);//modéré
                 }else{
                 // Autre exception
                 throw new Exception('Aucun identifiant de billet envoyé');
@@ -104,7 +104,7 @@ try{//on essaie de faire des choses
                 if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0'))
                 {
                     $frontend = new alban\project_4\controller\Frontend();
-                    $frontend->moderatedComment($_GET['id'], $_GET['postId']);
+                    $frontend->moderatedComment($_GET['id'], $_GET['postId']);//signalé
                     $frontend = new alban\project_4\controller\Frontend();
                     $frontend->post($_GET['postId']);
                 }else{
@@ -116,7 +116,7 @@ try{//on essaie de faire des choses
             case 'updateText':
                 if(isset($_GET['id']) && $_GET['id'] > '0')
                 {
-                    $backend = new alban\project_4\controller\Frontend();
+                    $backend = new alban\project_4\controller\Backend();
                     $backend->accessWysiwyg($_GET['id']);
                 }else{
                     // Autre exception
@@ -130,7 +130,7 @@ try{//on essaie de faire des choses
                     if(!empty($_POST['updateContent_post']) && !empty($_POST['updateTitle']))//permet de remplacer un épisode
                     {
                         if($_GET['id'] > '0'){
-                            $backend = new alban\project_4\controller\Frontend();
+                            $backend = new alban\project_4\controller\Backend();
                             $backend->updatepost($_GET['id'], $_POST['updateContent_post'], $_POST['updateTitle']);
                         }else{
                             throw new Exception('Le numéro de l\'épisode n\'est pas supérieur à 0 !');
@@ -145,7 +145,7 @@ try{//on essaie de faire des choses
 
             case 'deletePost':
                 if(isset($_GET['id']) && $_GET['id'] > '0'){
-                    $backend = new alban\project_4\controller\Frontend();
+                    $backend = new alban\project_4\controller\Backend();
                     $backend->deletePost($_GET['id']);
                 }else{
                     throw new Exception('Toucher aux paramètres de l\'URL c\'est vraiment très mal !');
