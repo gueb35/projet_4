@@ -45,7 +45,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.php">Accueil</a></li>
                         <li><a href="index.php?action=accessAdministrator">Espace administrateur</a></li>
-                        <li><a href="index.php?action=accessEpisodes">Espace lecture</a></li>
+                        <li><a href="index.php?action=accessReadPosts">Espace lecture</a></li>
                     </ul>
                 </div>
             </nav>

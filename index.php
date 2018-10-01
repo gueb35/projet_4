@@ -43,12 +43,12 @@ try{//on essaie de faire des choses
                 }
             break;
 
-            case 'accessEpisodes':
+            case 'accessReadPosts':
                 $frontend = new alban\project_4\controller\Frontend();
                 $frontend->posts();
             break;
 
-            case 'accessEpisode':
+            case 'accessPost':
                 if(isset($_GET['id']) && $_GET['id'] > '0')
                 {
                     $frontend = new alban\project_4\controller\Frontend();
