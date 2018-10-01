@@ -1,7 +1,13 @@
 <?php
 
+// namespace alban\project_4;
+
+// use \alban\project_4\controller\Frontend;
+// use \alban\project_4\controller\Backend;
+
 require('controller/Frontend.php');
 require('controller/Backend.php');
+
 
 define("PREFIXE", "115599");
 define("SUFFIXE", "D5ZC4Z");
@@ -89,7 +95,7 @@ try{//on essaie de faire des choses
                 $backend->accessModerateCommentView();
             break;
 
-            case 'moderateComment':
+            case 'moderateComment'://modéré un commentaire
                 if(isset($_GET['id']) && $_GET['id'] > 0)
                 {
                     $backend = new alban\project_4\controller\Backend();
@@ -100,10 +106,10 @@ try{//on essaie de faire des choses
                 }
             break;
 
-            case 'moderated':
+            case 'moderated'://signalé un commentaire
                 if(isset($_GET['id']) && $_GET['id'] > '0' && (isset($_GET['postId']) && $_GET['postId'] > '0'))
                 {
-                    $frontend = new alban\project_4\controller\Frontend();
+                    $frontend = new alban\project_4\controller\Backend();
                     $frontend->moderatedComment($_GET['id'], $_GET['postId']);//signalé
                     $frontend = new alban\project_4\controller\Frontend();
                     $frontend->post($_GET['postId']);

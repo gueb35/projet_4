@@ -2,7 +2,7 @@
 
 namespace alban\project_4\model;
 
-class Manager
+abstract class Manager
 {
     protected function dbConnect()
     {

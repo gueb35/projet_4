@@ -3,24 +3,19 @@
 namespace alban\project_4\controller;
 
 use \alban\project_4\model\PostManager;
-
 use \alban\project_4\model\CommentManager;
 
 
 // Chargement des classes
-require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
+// require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
 require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes du modèle
 
-class Backend
+class Backend extends CommentManager
 {
     /************fonctions pour accéder aux vues*************/
     public function accessAdministrator()
     {
         require('view/backend/administratorAccessView.php');
-    }
-    public function accessAdministratorModerateComment()
-    {
-        require('view/backend/administratorModerateComment.php');
     }
     /*************************/
     public function sendText($content_post, $title){//permet d'envoyer un épisode en bdd
@@ -39,15 +34,21 @@ class Backend
         require('view/backend/administratorHomeView.php');
     }
     /***************************/
-    public function pushModerateComment($id){
+    public function moderatedComment($commentId,$id)//fonction pour signaler un commentaire
+    {
+        $this->moderated($commentId);
+    }
+    /***************************/
+    public function pushModerateComment($id)//permet la modération d'un commentaire
+    {
+        $this->pushModerated($id);
         $commentManager = new CommentManager();
-        $commentManager->pushModerated($id);
         $commentsModerate = $commentManager->accessModerateCommentView();
         
         require('view/backend/administratorModerateComment.php');
     }
     /***************************/
-    public function accessModerateCommentView()
+    public function accessModerateCommentView()//récupère des données ds 2 tables différentes
     {
         $commentManager = new CommentManager();
         $commentsModerate = $commentManager->accessModerateCommentView();
@@ -69,8 +70,7 @@ class Backend
         $postManager->updatePost($id, $content_post, $updateTitle);
         $posts = $postManager->getPosts();
 
-        $commentManager = new CommentManager();
-        $commentManager->deleteComment($id);
+        $this->deleteComment($id);
         
         require('view/backend/administratorHomeView.php');
     }
@@ -81,8 +81,7 @@ class Backend
         $postManager->deletePost($id);
         $posts = $postManager->getPosts();
 
-        $commentManager = new CommentManager();
-        $commentManager->deleteComment($id);
+        $this->deleteComment($id);
 
         require('view/backend/administratorHomeView.php');
     }
