@@ -17,7 +17,7 @@
     <div class="create">
         <form action="./index.php?action=sendText" method="post">
             <textarea id="title" name="title">Ecrivez ici votre titre !</textarea>
-            <textarea id="resultat" name="resultat">Ecrivez ici votre texte !</textarea>
+            <textarea id="content_post" name="content_post">Ecrivez ici votre texte !</textarea>
             <div class="text-center">
                 <input type="submit" value="Envoyer votre épisode"/>
             </div>

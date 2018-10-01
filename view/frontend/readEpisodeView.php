@@ -9,7 +9,7 @@
         <div class="episode1andmore col-xs-offset-1 col-xs-11 col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-5">
             <p>
                 <?= ($post['title']) ?>
-                <?= ($post['resultat']) ?>
+                <?= ($post['content_post']) ?>
             </p>
             <a href="index.php?action=accessEpisode&amp;id=<?= $previousPostId ?>">épisode précédent</a>
             <a href="index.php?action=accessEpisode&amp;id=<?= $nextPostId ?>">épisode suivant</a>

@@ -1,5 +1,7 @@
 <?php
 
+namespace alban\project_4\controller;
+
 use \alban\project_4\model\PostManager;
 
 use \alban\project_4\model\CommentManager;
@@ -25,9 +27,9 @@ class Frontend
         require('view/backend/administratorModerateComment.php');
     }
     /*************************/
-    public function sendText($resultat, $title){//permet d'envoyer un épisode en bdd
+    public function sendText($content_post, $title){//permet d'envoyer un épisode en bdd
         $postManager = new PostManager();
-        $postManager->postText($resultat, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+        $postManager->postText($content_post, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
         $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet)
 
         require('view/backend/administratorHomeView.php');
@@ -44,7 +46,7 @@ class Frontend
     public function posts()//fonction pour afficher tous les épisodes sur la page d'accueil de l'espace lecture
     {
         $postManager = new PostManager();// Création d'un objet(instance)
-        // $postTitle = $postManager->postText($resultat, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
+        // $postTitle = $postManager->postText($content_post, $title);// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
         $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
         require('view/frontend/readEpisodesHomeView.php');
@@ -111,10 +113,10 @@ class Frontend
         require('view/backend/administratorUpdateView.php');
     }
     /***************************/
-    public function updatePost ($id, $resultat, $updateTitle)
+    public function updatePost ($id, $content_post, $updateTitle)
     {
         $postManager = new PostManager();// Création d'un objet(instance)
-        $postManager->updatePost($id, $resultat, $updateTitle);//invoquer la méthode pour modifier un épisode
+        $postManager->updatePost($id, $content_post, $updateTitle);//invoquer la méthode pour modifier un épisode
         $posts = $postManager->getPosts();// Appel d'une fonction de cet objet(invoquer la méthode de cet objet),
 
         $commentManager = new CommentManager();

@@ -16,7 +16,7 @@
     <div class="update">
             <form action="./index.php?action=updatePost&amp;id=<?= ($post['id']) ?>" method="post">
                 <textarea id="updateTitle" name="updateTitle"><?= $post['title'] ?></textarea>
-                <textarea id="updateResultat" name="updateResultat"><?= $post['resultat'] ?></textarea>
+                <textarea id="updateContent_post" name="updateContent_post"><?= $post['content_post'] ?></textarea>
                 <div class="text-center">
                     <input type="submit" value="Modifiez votre épisode"/>
                 </div>

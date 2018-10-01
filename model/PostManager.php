@@ -3,22 +3,21 @@
 namespace alban\project_4\model;
 
 require_once('model/Manager.php');//fait appel au fichier "Manager" pour la connexion à la bdd
-//cela évite de dupliquer le code de connexion à la bdd
 
 class PostManager extends Manager
 {
-    public function postText($resultat, $title)//fonction qui fait une requète pour insérer des épisodes en bdd
+    public function postText($content_post, $title)//fonction qui fait une requète pour insérer des épisodes en bdd
     {
         $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO author(resultat, title) VALUES(?, ?)');
-        $affectedLines = $post->execute(array($resultat, $title));
+        $post = $db->prepare('INSERT INTO author(content_post, title) VALUES(?, ?)');
+        $affectedLines = $post->execute(array($content_post, $title));
 
         return $affectedLines;
     }
     public function getPosts()//récupère tous les épidodes
     {
         $db = $this->dbConnect();
-        $posts = $db->prepare('SELECT id, title, resultat, SUBSTRING(resultat, 1, 500) AS short_post FROM author');
+        $posts = $db->prepare('SELECT id, title, content_post, SUBSTRING(content_post, 1, 500) AS short_post FROM author');
         $posts->execute(array());
     
         return $posts;    
@@ -26,7 +25,7 @@ class PostManager extends Manager
     public function getPost($id)//récupère un épisode
     {
         $db = $this->dbConnect($id);
-        $req = $db->prepare('SELECT id, title, resultat FROM author WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content_post FROM author WHERE id = ?');
         $req->execute(array($id));
         $post = $req->fetch();
     
@@ -50,11 +49,12 @@ class PostManager extends Manager
         
         return $postId['id'];
     }  
-    public function updatePost ($id, $resultat, $updateTitle){
+    public function updatePost ($id, $content_post, $updateTitle)
+    {
         $db = $this->dbConnect($id);
-        $update = $db->prepare('UPDATE author SET resultat = :newResultat, title = :newTitle WHERE id = :newId');
+        $update = $db->prepare('UPDATE author SET content_post = :newcontent_post, title = :newTitle WHERE id = :newId');
         $update->execute(array(
-            'newResultat' => $resultat,
+            'newcontent_post' => $content_post,
             'newTitle' => $updateTitle,
             'newId' => $id
         ));

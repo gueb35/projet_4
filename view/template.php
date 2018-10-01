@@ -24,14 +24,14 @@
         </script> 
         <script>
             tinymce.init({
-                selector: '#resultat',
+                selector: '#content_post',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
         </script>
         <script>
             tinymce.init({
-                selector: '#updateResultat',
+                selector: '#updateContent_post',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
