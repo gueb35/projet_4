@@ -7,35 +7,6 @@
         <title><?= $title ?></title>
         <link rel="stylesheet" href="./public/css/style.css"/>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-        <script src="public/js/tinymce/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: '#title',
-                language: 'fr_FR',
-                language_url: 'public/js/tinymce/langs/fr_FR.js'
-            });
-        </script>       
-        <script>
-            tinymce.init({
-                selector: '#updateTitle',
-                language: 'fr_FR',
-                language_url: 'public/js/tinymce/langs/fr_FR.js'
-            });
-        </script> 
-        <script>
-            tinymce.init({
-                selector: '#content_post',
-                language: 'fr_FR',
-                language_url: 'public/js/tinymce/langs/fr_FR.js'
-            });
-        </script>
-        <script>
-            tinymce.init({
-                selector: '#updateContent_post',
-                language: 'fr_FR',
-                language_url: 'public/js/tinymce/langs/fr_FR.js'
-            });
-        </script>
     </head>
 
     <body>

@@ -12,7 +12,7 @@ require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes d
 
 class Backend extends CommentManager
 {
-    /************fonctions pour accéder aux vues*************/
+    /************fonctions pour accéder aux vues directement*************/
     public function accessAdministrator()
     {
         require('view/backend/administratorAccessView.php');

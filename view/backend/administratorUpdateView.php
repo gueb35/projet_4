@@ -47,5 +47,5 @@ else
 
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
-<?php require('view/template.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+<?php require('templateAdmin.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
 
