@@ -1,4 +1,18 @@
 <?php $title = 'Bienvenue sur votre interface d\'administration Mr Forteroche !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
+<?php
+session_start();
+
+$cookie_name = "ticket";
+// On génère quelque chose d'aléatoire
+$ticket = session_id().microtime().rand(0,9999999999);
+// on hash pour avoir quelque chose de propre qui aura toujours la même forme
+$ticket = hash('sha512', $ticket);
+
+// On enregistre des deux cotés
+setcookie($cookie_name, $ticket, time() + (60 * 20)); // Expire au bout de 20 min
+$_SESSION['ticket'] = $ticket;
+?>
+
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
 

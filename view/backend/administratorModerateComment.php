@@ -1,4 +1,26 @@
 <?php $title = 'Bienvenue sur votre interface permettant la modération de commentaires !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
+<?php
+session_start();
+
+if (isset($_COOKIE['ticket']) == $_SESSION['ticket'])
+{
+	// C'est reparti pour un tour
+    $ticket = session_id().microtime().rand(0,9999999999);
+    // var_dump($ticket);die;
+    $ticket = hash('sha512', $ticket);
+    // var_dump($ticket);die;
+	$_COOKIE['ticket'] = $ticket;
+	$_SESSION['ticket'] = $ticket;
+}
+else
+{
+	// On détruit la session
+	$_SESSION = array();
+	session_destroy();
+	header('location:index.php');exit;
+}
+?>
+
 <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
     <div class="titlemoderateComment">

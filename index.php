@@ -42,8 +42,8 @@ try{//on essaie de faire des choses
             case 'sendText':
                 if(!empty($_POST['content_post']) && !empty($_POST['title']))
                 {
-                    // $_POST['content_post'] = (string) $_POST['content_post'];
-                    // $_POST['title'] = (string) $_POST['title'];
+                    $_POST['content_post'] = (string) $_POST['content_post'];
+                    $_POST['title'] = (string) $_POST['title'];
                     $backend = new alban\project_4\controller\Backend();
                     $backend->sendText($_POST['content_post'], $_POST['title']);//envoie l'épisode en bdd
                 }else{
