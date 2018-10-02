@@ -18,7 +18,7 @@ class Backend extends CommentManager
         require('view/backend/administratorAccessView.php');
     }
     /*************************/
-    public function sendText($content_post, $title){//permet d'envoyer un épisode en bdd
+    public function sendText(string $content_post, string $title){//permet d'envoyer un épisode en bdd
         $postManager = new PostManager();
         $postManager->postText($content_post, $title);
         $posts = $postManager->getPosts();
@@ -34,12 +34,12 @@ class Backend extends CommentManager
         require('view/backend/administratorHomeView.php');
     }
     /***************************/
-    public function moderatedComment($commentId,$id)//fonction pour signaler un commentaire
+    public function moderatedComment(string $commentId, int $id)//fonction pour signaler un commentaire
     {
         $this->moderated($commentId);
     }
     /***************************/
-    public function pushModerateComment($id)//permet la modération d'un commentaire
+    public function pushModerateComment(int $id)//permet la modération d'un commentaire
     {
         $this->pushModerated($id);
         $commentManager = new CommentManager();
@@ -56,7 +56,7 @@ class Backend extends CommentManager
         require('view/backend/administratorModerateComment.php');
     }
     /***************************/
-    public function accessWysiwyg($id)
+    public function accessWysiwyg(int $id)
     {
         $postManager = new PostManager();
         $post = $postManager->getPost($id);
@@ -64,7 +64,7 @@ class Backend extends CommentManager
         require('view/backend/administratorUpdateView.php');
     }
     /***************************/
-    public function updatePost ($id, $content_post, $updateTitle)
+    public function updatePost (int $id, string $content_post, string $updateTitle)
     {
         $postManager = new PostManager();
         $postManager->updatePost($id, $content_post, $updateTitle);
@@ -75,7 +75,7 @@ class Backend extends CommentManager
         require('view/backend/administratorHomeView.php');
     }
     /***************************/
-    public function deletePost($id)
+    public function deletePost(int $id)
     {
         $postManager = new PostManager();
         $postManager->deletePost($id);

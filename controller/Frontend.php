@@ -25,7 +25,7 @@ class Frontend extends PostManager
         require('view/frontend/readPostsHomeView.php');
     }
     /***************************/
-    public function post($id)//fonction pour afficher l'épisode et ses commentaires
+    public function post(int $id)//fonction pour afficher l'épisode et ses commentaires
     {
         $post = $this->getPost($id);
         
@@ -38,7 +38,7 @@ class Frontend extends PostManager
         require('view/frontend/readPostView.php');
     }
     /********************************/
-    public function addComment($postId, $author, $comment)//fonction pour envoyer un commentaire
+    public function addComment(int $postId, string $author, string $comment)//fonction pour envoyer un commentaire
     {
         $post = $this->getPost($postId);
 
