@@ -17,6 +17,10 @@ class Backend extends CommentManager
     {
         require('view/backend/administratorAccessView.php');
     }
+    public function stopSession()
+    {
+        require('view/backend/session.php');
+    }
     /*************************/
     public function sendText(string $content_post, string $title){//permet d'envoyer un épisode en bdd
         $postManager = new PostManager();

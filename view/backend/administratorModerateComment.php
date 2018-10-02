@@ -4,17 +4,14 @@ session_start();
 
 if (isset($_COOKIE['ticket']) == $_SESSION['ticket'])
 {
-	// C'est reparti pour un tour
     $ticket = session_id().microtime().rand(0,9999999999);
-    // var_dump($ticket);die;
     $ticket = hash('sha512', $ticket);
-    // var_dump($ticket);die;
 	$_COOKIE['ticket'] = $ticket;
 	$_SESSION['ticket'] = $ticket;
 }
 else
 {
-	// On détruit la session
+	//Détruit la session
 	$_SESSION = array();
 	session_destroy();
 	header('location:index.php');exit;

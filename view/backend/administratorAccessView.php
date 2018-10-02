@@ -18,7 +18,8 @@
                 <input type="submit" value="Accéder à votre interface d'écriture"/>
             </div>
         </form>
-        <p class="redFont">Pour des raisons de sécurité, veuillez ne jamais autoriser la mémorisation de votre identifiant et mot de passe !<p>
+        <p class="redFont">Pour des raisons de sécurité, veuillez ne jamais autoriser la mémorisation de votre identifiant et mot de passe !<br/>
+        Pensez également à vous deconnecter grâce au bouton "déconnexion" situé dans le menu dès que vous n'utilisez plus votre espace d'administration !<p>
 
     </div>
 

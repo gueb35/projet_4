@@ -180,6 +180,11 @@ try{//on essaie de faire des choses
                 }
             break;
 
+            case 'stopSession':
+                $frontend = new alban\project_4\controller\Backend();
+                $frontend->stopSession();
+            break;
+
             default : throw new Exception('Le paramètre ne correspond à aucun des paramètres attendues !');
         }
     }
