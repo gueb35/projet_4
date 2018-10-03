@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // namespace alban\project_4;
 
 // use \alban\project_4\controller\Frontend;
@@ -34,6 +34,7 @@ try{//on essaie de faire des choses
             case 'identification':
                 if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
                     if(($_POST['login'] == 'Jean_Forteroche') && ((PREFIXE.hash("sha256",$_POST['password']).SUFFIXE) == '115599c17ac113230f5f31c4a53f58d0f24e8199dce328ae69acb0839e9cb224873a16D5ZC4Z')){//vérifie si le login et le password sont correct
+                        $_SESSION['auth'] = true;
                         $backend = new alban\project_4\controller\Backend();
                         $backend->postsAdministrator();
                     }else{
