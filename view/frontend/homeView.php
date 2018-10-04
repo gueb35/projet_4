@@ -18,4 +18,3 @@
 <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
 <?php require('templateUser.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
-

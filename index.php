@@ -1,6 +1,7 @@
 <?php
-session_start();
 // namespace alban\project_4;
+session_start();
+
 
 // use \alban\project_4\controller\Frontend;
 // use \alban\project_4\controller\Backend;
@@ -11,6 +12,12 @@ require('controller/Backend.php');
 
 define("PREFIXE", "115599");
 define("SUFFIXE", "D5ZC4Z");
+
+// require 'Autoloader.php';
+// Autoloader::register();
+
+// $backend = new alban\project_4\controller\Backend();
+// $frontend = new alban\project_4\controller\Frontend();
 
 try{//on essaie de faire des choses
     if(isset($_GET['action'])){//si le paramètre "action" est présent ds l'url
@@ -28,7 +35,7 @@ try{//on essaie de faire des choses
 
             case 'accessAdministratorHomeView':
                 $backend = new alban\project_4\controller\Backend();
-                $backend->postsAdministrator();//envoie à la vue de la page d'identification de l'administrateur
+                $backend->postsAdministrator();
             break;
 
             case 'identification':

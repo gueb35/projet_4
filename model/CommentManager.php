@@ -1,8 +1,8 @@
 <?php
 
 namespace alban\project_4\model;
-
-require_once('model/Manager.php');//fait appel au fichier "Manager" pour la connexion à la bdd
+// use alban\projet_4\model;
+// require_once('model/Manager.php');//fait appel au fichier "Manager" pour la connexion à la bdd
 //cela évite de dupliquer le code de connexion à la bdd
 
 class CommentManager extends Manager

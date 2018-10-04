@@ -2,7 +2,7 @@
 
 namespace alban\project_4\controller;
 
-use \alban\project_4\model\PostManager;
+use \alban\project_4\model\PostManager;//permet de ne pas spécifier à chaque le namespace lors de l'instanciation
 use \alban\project_4\model\CommentManager;
 
 
@@ -10,7 +10,7 @@ use \alban\project_4\model\CommentManager;
 // require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
 require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes du modèle
 
-class Backend extends CommentManager
+class Backend extends CommentManager//permet d'hériter des méthodes de la class CommentManager donc d'utiliser $this
 {
     /************fonctions pour accéder aux vues directement*************/
     public function accessAdministrator()
