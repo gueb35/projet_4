@@ -4,21 +4,28 @@ namespace alban\project_4\controller;
 
 use \alban\project_4\model\PostManager;//permet de ne pas spécifier à chaque le namespace lors de l'instanciation
 use \alban\project_4\model\CommentManager;
+use \alban\project_4\model\AccessManager;
 
 
 // Chargement des classes
-// require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
+require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
 require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes du modèle
+require_once('model/AccessManager.php');
 
-class Backend//permet d'hériter des méthodes de la class CommentManager donc d'utiliser $this
+class Backend
 {
+    const PREFIXE = "115599";
+    const SUFFIXE = "D5ZC4Z";
+
     private $_postManager;
     private $_commentManager;
+    private $_accessManager;
     
     public function __construct()
     {
         $this->_postManager = new PostManager();
         $this->_commentManager = new CommentManager();
+        $this->_accessManager = new AccessManager();
     }
     /************fonctions pour accéder aux vues directement*************/
     public function accessAdministrator()
@@ -44,6 +51,22 @@ class Backend//permet d'hériter des méthodes de la class CommentManager donc d
         require('view/backend/administratorHomeView.php');
     }
     /***************************/
+    public function verifAccess($loginForm, $passwordForm)//fonction pour vérifier le logint et mot de passe
+    {
+        $login = $this->_accessManager->getLogin();
+        $password = $this->_accessManager->getPassword();
+    
+        if(($login['loginAdministrator'] == $loginForm) && ($password['passwordAdministrator'] == (self::PREFIXE.hash("sha256",$passwordForm).self::SUFFIXE)))
+        {
+            $_SESSION['auth'] = true;
+            $posts = $this->_postManager->getPosts();
+            require('view/backend/administratorHomeView.php');
+        }
+        else{
+            throw new RouteurException('Le login ou le mot de passe sont incorrect !');
+        }
+    }
+    /***************************/
     public function moderatedComment(string $commentId, int $id)//fonction pour signaler un commentaire
     {
         $this->_commentManager->moderated($commentId);
@@ -59,7 +82,6 @@ class Backend//permet d'hériter des méthodes de la class CommentManager donc d
     /***************************/
     public function accessModerateCommentView()//récupère des données ds 2 tables différentes
     {
-        // $commentManager = new CommentManager();
         $commentsModerate = $this->_commentManager->accessModerateCommentView();
 
         require('view/backend/administratorModerateComment.php');
@@ -77,7 +99,7 @@ class Backend//permet d'hériter des méthodes de la class CommentManager donc d
         $this->_postManager->updatePost($id, $content_post, $updateTitle);
         $posts = $this->_postManager->getPosts();
 
-        $this->deleteComment($id);
+        $this->_commentManager->deleteComment($id);
         
         require('view/backend/administratorHomeView.php');
     }
@@ -87,7 +109,7 @@ class Backend//permet d'hériter des méthodes de la class CommentManager donc d
         $this->_postManager->deletePost($id);
         $posts = $this->_postManager->getPosts();
 
-        $this->deleteComment($id);
+        $this->_commentManager->deleteComment($id);
 
         require('view/backend/administratorHomeView.php');
     }

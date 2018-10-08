@@ -7,14 +7,14 @@ use \alban\project_4\model\CommentManager;
 
 
 // Chargement des classes
-require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
-// require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes du modèle
+require_once('model/PostManager.php');
+// require_once('model/CommentManager.php');
 
 class Frontend
 {
     private $_postManager;
     private $_commentManager;
-    
+
     public function __construct()
     {
         $this->_postManager = new PostManager();
@@ -36,7 +36,7 @@ class Frontend
     public function post(int $id)//fonction pour afficher l'épisode et ses commentaires
     {
         $post = $this->_postManager->getPost($id);
-        
+
         $previousPostId = $this->_postManager->getPostInferior($id);
         $nextPostId = $this->_postManager->getPostSuperior($id);
 
@@ -49,6 +49,8 @@ class Frontend
     {
         $post = $this->_postManager->getPost($postId);
 
+        $author =  htmlspecialchars($_POST['author']);//permet de convertir les balises en caractères avant d'enregistrer en bdd
+        $comment = htmlspecialchars($_POST['comment']);//donc de bloquer l'execution d'un script
         $affectedLines = $this->_commentManager->postComment($postId, $author, $comment);
         if($affectedLines === false){
             throw new Exception('Impossible d\'ajouter le commentaire !');

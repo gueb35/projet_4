@@ -2,15 +2,14 @@
 
 namespace alban\project_4\controller;
 
-
 require('Frontend.php');
 require('Backend.php');
 require('RouteurException.php');
 
 class Routeur{
 
-    const PREFIXE = "115599";
-    const SUFFIXE = "D5ZC4Z";
+    // const PREFIXE = "115599";
+    // const SUFFIXE = "D5ZC4Z";
 
     private $_frontend;
     private $_backend;
@@ -41,12 +40,7 @@ class Routeur{
 
                 case 'identification':
                     if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
-                        if(($_POST['login'] == 'Jean_Forteroche') && ((self::PREFIXE.hash("sha256",$_POST['password']).self::SUFFIXE) == '115599c17ac113230f5f31c4a53f58d0f24e8199dce328ae69acb0839e9cb224873a16D5ZC4Z')){//vérifie si le login et le password sont correct
-                            $_SESSION['auth'] = true;
-                            $this->_backend->postsAdministrator();
-                        }else{
-                            throw new RouteurException('Le login ou le mot de passe sont incorrect !');
-                        }
+                        $this->_backend->verifAccess($_POST['login'], $_POST['password']);
                     }else{
                         throw new RouteurException('Vous n\'avez pas rempli tout les champs');
                     }
@@ -94,9 +88,7 @@ class Routeur{
                         $_GET['id'] = (int) $_GET['id'];
                         if(!empty($_POST['author']) && !empty($_POST['comment']))
                         {
-                            $author =  htmlspecialchars($_POST['author']);//permet de convertir les balises en caractères
-                            $comment = htmlspecialchars($_POST['comment']);//permet de convertir les balises en caractères
-                            $this->_frontend->addComment($_GET['id'], $author, $comment);//appel au bon controller
+                            $this->_frontend->addComment($_GET['id'], $_POST['author'], $_POST['comment']);//appel au bon controller
                         }
                         else{
                             // Autre exception
