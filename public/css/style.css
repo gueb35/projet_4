@@ -64,7 +64,7 @@ h1{
 }
 /***************page d'erreur*******************/
 .errorMessage{
-    padding-top: 40px;
+    padding-top: 100px;
 }
 /**************page de lecture d'un épisode : readEpisodeView.php****************/
 .episode1andmore{
