@@ -1,9 +1,6 @@
 <?php
 
-namespace alban\project_4\model;
-
-// require_once('model/Manager.php');//fait appel au fichier "Manager" pour la connexion à la bdd
-//cela évite de dupliquer le code de connexion à la bdd
+namespace alban\projet_4\model;
 
 class CommentManager extends Manager
 {
@@ -26,12 +23,12 @@ class CommentManager extends Manager
     public function accessModerateCommentView()//requète avec jointure entre les 2 tables
     {
         $db = $this->dbConnect();
-        $commentsModerate = $db->prepare('SELECT us.comment AS commentModerate, us.author 
+        $commentsModerate = $db->prepare('SELECT us.comment AS commentModerate, us.author
         AS authorComMod, us.id AS idComMod, us.moderated AS comMod, po.title AS titleComMod,
-        DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
+        DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
         FROM user AS us
         INNER JOIN posts AS po
-        ON us.post_id = po.id 
+        ON us.post_id = po.id
         WHERE us.moderated = "signalé" || us.moderated = "modéré" ORDER BY creation_date DESC');
         $commentsModerate->execute(array());
 

@@ -1,14 +1,9 @@
 <?php
 
-namespace alban\project_4\controller;
+namespace alban\projet_4\controller;
 
-use \alban\project_4\model\PostManager;
-use \alban\project_4\model\CommentManager;
-
-
-// Chargement des classes
-require_once('model/PostManager.php');
-// require_once('model/CommentManager.php');
+use \alban\projet_4\model\PostManager;
+use \alban\projet_4\model\CommentManager;
 
 class Frontend
 {

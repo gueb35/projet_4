@@ -1,10 +1,13 @@
 <?php
 
 session_start();
-    // require 'Autoloader.php';
-    // Autoloader::register();
-require('routeur/Routeur.php');
 
-$routeur = new alban\project_4\routeur\Routeur();
+use \alban\projet_4\Autoloader;
+use \alban\projet_4\routeur\Routeur;
+
+require 'Autoloader.php';
+Autoloader::register();
+
+$routeur = new Routeur();
 $routeur->routeur();
 ?>

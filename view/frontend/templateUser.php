@@ -22,6 +22,6 @@
             </nav>
         </div>
 
-        <?= $content ?>    
+        <?= $content ?>
     </body>
 </html>

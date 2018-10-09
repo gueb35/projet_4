@@ -7,7 +7,7 @@ if(isset($_SESSION['auth']) === true)
 
     <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
 
-        <div class="title"> 
+        <div class="title">
             <h1 class="titreWysiwyg">Que l'inspiration soit avec vous !</h1>
         </div>
 

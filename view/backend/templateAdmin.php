@@ -14,14 +14,14 @@
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
-        </script>       
+        </script>
         <script>
             tinymce.init({
                 selector: '#updateTitle',
                 language: 'fr_FR',
                 language_url: 'public/js/tinymce/langs/fr_FR.js'
             });
-        </script> 
+        </script>
         <script>
             tinymce.init({
                 selector: '#content_post',
@@ -52,6 +52,6 @@
             </nav>
         </div>
 
-        <?= $content ?>    
+        <?= $content ?>
     </body>
 </html>

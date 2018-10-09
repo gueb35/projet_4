@@ -1,6 +1,6 @@
 <?php
 
-namespace alban\project_4\model;
+namespace alban\projet_4\model;
 
 class AccessManager extends Manager
 {

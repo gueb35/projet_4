@@ -1,6 +1,6 @@
 <?php
 
-namespace alban\project_4\routeur; 
+namespace alban\projet_4\routeur;
 
 class RouteurException extends \Exception
 {

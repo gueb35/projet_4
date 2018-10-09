@@ -1,16 +1,10 @@
 <?php
 
-namespace alban\project_4\controller;
+namespace alban\projet_4\controller;
 
-use \alban\project_4\model\PostManager;//permet de ne pas spécifier à chaque le namespace lors de l'instanciation
-use \alban\project_4\model\CommentManager;
-use \alban\project_4\model\AccessManager;
-
-
-// Chargement des classes
-require_once('model/PostManager.php');//permet d'avoir accès aux méthodes du modèle
-require_once('model/CommentManager.php');//permet d'avoir accès aux méthodes du modèle
-require_once('model/AccessManager.php');
+use \alban\projet_4\model\PostManager;//permet de ne pas spécifier à chaque le namespace lors de l'instanciation
+use \alban\projet_4\model\CommentManager;
+use \alban\projet_4\model\AccessManager;
 
 class Backend
 {
@@ -20,7 +14,7 @@ class Backend
     private $_postManager;
     private $_commentManager;
     private $_accessManager;
-    
+
     public function __construct()
     {
         $this->_postManager = new PostManager();
@@ -55,7 +49,7 @@ class Backend
     {
         $login = $this->_accessManager->getLogin();
         $password = $this->_accessManager->getPassword();
-    
+
         if(($login['loginAdministrator'] == $loginForm) && ($password['passwordAdministrator'] == (self::PREFIXE.hash("sha256",$passwordForm).self::SUFFIXE)))
         {
             $_SESSION['auth'] = true;
@@ -76,7 +70,7 @@ class Backend
     {
         $this->_commentManager->pushModerated($id);
         $commentsModerate = $this->_commentManager->accessModerateCommentView();
-        
+
         require('view/backend/administratorModerateComment.php');
     }
     /***************************/
@@ -100,7 +94,7 @@ class Backend
         $posts = $this->_postManager->getPosts();
 
         $this->_commentManager->deleteComment($id);
-        
+
         require('view/backend/administratorHomeView.php');
     }
     /***************************/
