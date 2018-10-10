@@ -113,6 +113,12 @@ h1{
     .title{
         margin-top: 100px;
     }
+    .titreWysiwyg{
+        margin-top: 170px;
+    }
+    .titlemoderate{
+        margin-top: 200px;
+    }
     .readEpisodesPage{
         width: 80%;
     }
