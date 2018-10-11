@@ -97,8 +97,8 @@ class Routeur{
             break;
 
             default : throw new RouteurException('Le paramètre ne correspond à aucun des paramètres attendues !');
-        }//switch
-    }//function doAction
+        }
+    }
 
 /***********bloc function*************/
     private function caseIdentification(){

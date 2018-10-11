@@ -1,7 +1,5 @@
 <?php
 
-namespace alban\projet_4;
-
 class Autoloader{
     static public function register()
     {
