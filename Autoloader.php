@@ -3,11 +3,11 @@
 namespace alban\projet_4;
 
 class Autoloader{
-    static function register()
+    static public function register()
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
-    static function autoload($class) {
+    static public function autoload($class) {
 
         $prefix = 'alban\\projet_4\\';
 
@@ -29,4 +29,3 @@ class Autoloader{
         }
     }
 }
-?>
