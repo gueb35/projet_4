@@ -15,20 +15,29 @@ class Frontend
         $this->_postManager = new PostManager();
         $this->_commentManager = new CommentManager();
     }
-    /************fonctions pour accéder aux vues*************/
+
+    /**
+     * fonction pour accéder à la vue de la page d'accueil 
+     */
     public function showHomeView()//appelé si aucun paramètre action n'est présent
     {
         require('view/frontend/homeView.php');
     }
-    /***************************/
-    public function posts()//fonction pour afficher tous les épisodes sur la page d'accueil de l'espace lecture
+
+    /**
+     * fonction pour afficher tous les épisodes sur la page d'accueil de l'espace lecture
+     */
+    public function posts()
     {
         $posts = $this->_postManager->getPosts();
 
         require('view/frontend/readPostsHomeView.php');
     }
-    /***************************/
-    public function post(int $id)//fonction pour afficher l'épisode et ses commentaires
+
+    /**
+     * fonction pour afficher l'épisode et ses commentaires
+     */
+    public function post(int $id)
     {
         $post = $this->_postManager->getPost($id);
 
@@ -39,8 +48,11 @@ class Frontend
 
         require('view/frontend/readPostView.php');
     }
-    /********************************/
-    public function addComment(int $postId, string $author, string $comment)//fonction pour envoyer un commentaire
+
+    /**
+     * fonction pour envoyer un commentaire
+     */
+    public function addComment(int $postId, string $author, string $comment)
     {
         $post = $this->_postManager->getPost($postId);
 
