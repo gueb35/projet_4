@@ -4,7 +4,17 @@ namespace alban\projet_4\model;
 
 class CommentManager extends Manager
 {
-    public function postComment($postId, $author, $comment)//fonction qui fait une requète pour créer des commentaires
+    /**
+     * fonction pour insérer des commentaires en bdd
+     * 
+     * @param int $postId
+     *  numéro correspondant à l'id du post
+     * @param string $author
+     *  nom de l'auteur qui envoit un commentaire
+     * @param string $comment
+     *  texte du commentaire
+     */
+    public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO user (post_id, author, comment, creation_date) VALUES(?, ?, ?, NOW())');
@@ -12,7 +22,14 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
-    public function getComments($postId)//fonction qui fait une requète pour récupèrer les commentaires
+
+    /**
+     * fonction pour récupèrer les commentaires associés à l'épisode
+     * 
+     * @param int $postId
+     *  numéro correspondant à l'id du post
+     */
+    public function getComments($postId)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM user WHERE post_id = ? ORDER BY creation_date DESC');
@@ -20,7 +37,14 @@ class CommentManager extends Manager
 
         return $comments;
     }
-    public function accessModerateCommentView()//requète avec jointure entre les 2 tables
+
+    /**
+     * fonction qui fait une requète avec jointure entre les 2 tables
+     * 
+     * sert à récupérer le titre de l'épisode sur la table "posts" et la date,
+     * le nom de l'auteur et le texte de son commentaire sur la table "user"
+     */
+    public function accessModerateCommentView()
     {
         $db = $this->dbConnect();
         $commentsModerate = $db->prepare('SELECT us.comment AS commentModerate, us.author
@@ -34,7 +58,16 @@ class CommentManager extends Manager
 
         return $commentsModerate;
     }
-    public function pushModerated($id)//fonction qui fait une requete pour modérer un commentaire
+
+    /**
+     * fonction qui fait une requete pour modérer un commentaire
+     * 
+     * permet de remplacer "signalé" par "modéré" après q'un utilisateur ai signalé un commentaire
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
+    public function pushModerated($id)
     {
         $db = $this->dbConnect();
         $moderate = $db->prepare('UPDATE user SET moderated = "modéré" WHERE id = :newId');
@@ -42,7 +75,16 @@ class CommentManager extends Manager
             'newId' => $id
             ));
     }
-    public function moderated($id)//fonction qui fait une requète pour signaler un commentaire
+
+    /**
+     * fonction qui fait une requète pour signaler un commentaire
+     * 
+     * permet d'insérer "signalé" dans le champ moderated
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
+    public function moderated($id)
     {
         $db = $this->dbConnect();
         $moderate = $db->prepare('UPDATE user SET moderated = "signalé" WHERE id = :newId');
@@ -50,7 +92,14 @@ class CommentManager extends Manager
             'newId' => $id
             ));
     }
-    public function deleteComment($postId){//efface les commentaires associés à un épisode
+
+    /**
+     * fonction qui efface les commentaires associés à un épisode
+     * 
+     * @param int $postId
+     *  numéro correspondant à l'id du post
+     */
+    public function deleteComment($postId){
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM user WHERE post_id = ?');
         $delete->execute(array($postId));

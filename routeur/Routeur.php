@@ -16,8 +16,10 @@ class Routeur{
         $this->_backend = new Backend();
     }
 
-/********bloc try/catch****************/
-   public function routeur(){
+    /**
+     * fonction contenant le bloc try/catch
+     */
+    public function routeur(){
         try{
             if(isset($_GET['action'])){//si le paramètre "action" est présent ds l'url
             $this->doAction();
@@ -31,7 +33,9 @@ class Routeur{
         }
     }
 
-/*********bloc switch************/
+    /**
+     * fonction contenant le bloc switch
+     */
     private function doAction(){
         $action = $_GET['action'];
         switch($action)
@@ -100,7 +104,9 @@ class Routeur{
         }
     }
 
-/***********bloc function*************/
+    /**
+     * bloc contenant les fonctions
+     */
     private function caseIdentification(){
         if(!empty($_POST['login']) && !empty($_POST['password'])){//vérifie si les champs ont bien été remplis
             $this->_backend->verifAccess($_POST['login'], $_POST['password']);

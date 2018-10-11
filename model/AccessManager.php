@@ -4,7 +4,10 @@ namespace alban\projet_4\model;
 
 class AccessManager extends Manager
 {
-    public function getLogin()//récupère le login
+    /**
+     * fonction qui récupère le login
+     */
+    public function getLogin()
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT loginAdministrator FROM administrator');
@@ -13,6 +16,10 @@ class AccessManager extends Manager
 
         return $login;
     }
+
+    /**
+     * fonction qui récupère le mot de passe
+     */
     public function getPassword()//récupère le mot de passe
     {
         $db = $this->dbConnect();

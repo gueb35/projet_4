@@ -4,7 +4,15 @@ namespace alban\projet_4\model;
 
 class PostManager extends Manager
 {
-    public function postText($content_post, $title)//fonction pour insérer des épisodes en bdd
+    /**
+     * fonction pour insérer des épisodes en bdd
+     * 
+     * @param string $content_post
+     *  texte de l'épisode
+     * @param string $title
+     *  titre de l'épisode
+     */
+    public function postText($content_post, $title)
     {
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts(content_post, title) VALUES(?, ?)');
@@ -12,7 +20,11 @@ class PostManager extends Manager
 
         return $affectedLines;
     }
-    public function getPosts()//récupère tous les épidodes
+
+    /**
+     * récupère tous les épidodes
+     */
+    public function getPosts()
     {
         $db = $this->dbConnect();
         $posts = $db->prepare('SELECT id, title, content_post, SUBSTRING(content_post, 1, 500) AS short_post FROM posts');
@@ -20,7 +32,14 @@ class PostManager extends Manager
 
         return $posts;
     }
-    public function getPost($id)//récupère un épisode
+
+    /**
+     * récupère un épisode
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
+    public function getPost($id)
     {
         $db = $this->dbConnect($id);
         $req = $db->prepare('SELECT id, title, content_post FROM posts WHERE id = ?');
@@ -29,7 +48,14 @@ class PostManager extends Manager
 
         return $post;
     }
-    public function getPostInferior($id)//récupère l'épisode précédent
+
+    /**
+     * récupère l'épisode précédent
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
+    public function getPostInferior($id)
     {
         $db = $this->dbConnect($id);
         $req = $db->prepare('SELECT id FROM posts WHERE id < ? ORDER BY id DESC LIMIT 1');
@@ -38,7 +64,14 @@ class PostManager extends Manager
 
         return $postId['id'];
     }
-    public function getPostSuperior($id)//récupère l'épisode suivant
+
+    /**
+     * récupère l'épisode suivant
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
+    public function getPostSuperior($id)
     {
         $db = $this->dbConnect($id);
         $req = $db->prepare('SELECT id FROM posts WHERE id > ? LIMIT 1');
@@ -47,6 +80,17 @@ class PostManager extends Manager
 
         return $postId['id'];
     }
+
+    /**
+     * fonction pour modifier un épisode et son titre
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     * @param string $content_post
+     *  texte de l'épisode
+     * @param string $updateTitle
+     *  titre de l'épisode
+     */
     public function updatePost ($id, $content_post, $updateTitle)
     {
         $db = $this->dbConnect($id);
@@ -57,6 +101,13 @@ class PostManager extends Manager
             'newId' => $id
         ));
     }
+
+    /**
+     * fonction qui efface un épisode
+     * 
+     * @param int $id
+     *  numéro de l'épisode
+     */
     public function deletePost($id){
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');

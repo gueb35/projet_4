@@ -3,9 +3,9 @@
 if(($_SESSION['auth']) == true)
 {
 ?>
-    <?php $title = 'Bienvenue sur votre interface d\'administration Mr Forteroche !'; ?><!--définit le titre de la page, celui-ci sera inséré ds la balise title ds le template-->
+    <?php $title = 'Bienvenue sur votre interface d\'administration Mr Forteroche !'; ?><!--définit le titre de la page-->
 
-    <?php ob_start(); ?><!--définit le contenu de la page, ob_start mémorise toute la sortie html-->
+    <?php ob_start(); ?><!--définit le contenu de la page-->
 
 
         <div class="title">
@@ -49,7 +49,7 @@ if(($_SESSION['auth']) == true)
 
     <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
-    <?php require('templateAdmin.php'); ?><!--appelle le template pour récupérer les variables $title et $content-->
+    <?php require('templateAdmin.php'); ?>
 <?php
 }
 else
