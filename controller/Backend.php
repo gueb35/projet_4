@@ -24,27 +24,27 @@ class Backend
     }
 
     /**
-    *fonctions pour accéder aux vues directement
-     **/
+     *fonction pour accéder directement à la vue pour identification de l'administrateur
+     */
     public function accessAdministrator()
     {
         require('view/backend/administratorAccessView.php');
     }
+
+    /**
+     * fonction pour détruire la session accessible depuis le bouton déconnexion du menu du template Admin
+     */
     public function stopSession()
     {
-        require('view/backend/session.php');
+        //Détruit la session
+        $_SESSION = array();
+        session_destroy();
+        header('location:index.php');
     }
 
     /**
-    *fonction pour envoyer un épisode en bdd
-    *
-    *@ param string $content_post
-    *   texte du post
-    *@ param string $title
-    *   texte du titre
-    *
-    *uses \alban\projet_4\model\PostManager()
-    **/
+     *fonction pour envoyer un épisode en bdd
+     */
     public function sendText(string $content_post, string $title){
         $this->_postManager->postText($content_post, $title);
         $posts = $this->_postManager->getPosts();
@@ -53,8 +53,8 @@ class Backend
     }
 
     /**
-    *fonction pour afficher tous les épisodes sur la page d'accueil de l'espace administrateur
-    **/
+     * fonction pour afficher tous les épisodes sur la page d'accueil de l'espace administrateur
+     */
     public function postsAdministrator(){
         $posts = $this->_postManager->getPosts();
 
@@ -62,27 +62,10 @@ class Backend
     }
 
     /**
-    *fonction pour vérifier le login et mot de passe
-    *
-    *@ param string $loginForm
-    *   login reçu via le formulaire
-    *@ param string $passwordForm
-    *   mot de passe reçu via le formulaire
-    *
-    *uses \alban\projet_4\model\AccessManager()
-    **/
+     * fonction pour vérifier le login et mot de passe
+     */
     public function verifAccess($loginForm, $passwordForm)
     {
-        /**
-         * récupère le login et le mdp en bdd
-         *
-         *@ param string $login
-         *  login reçu de la bdd
-         *@ param string $password
-         *  mot de passe reçu de la bdd
-         *
-         *uses \alban\projet_4\model\AccessManager()
-         */
         $login = $this->_accessManager->getLogin();
         $password = $this->_accessManager->getPassword();
 
@@ -98,16 +81,16 @@ class Backend
     }
 
     /**
-    *fonction pour signaler un commentaire
-    **/
+     * fonction pour signaler un commentaire
+     */
     public function moderatedComment(string $commentId, int $id)
     {
         $this->_commentManager->moderated($commentId);
     }
 
     /**
-    *fonction pour modérer d'un commentaire
-    **/
+     * fonction pour modérer d'un commentaire
+     */
     public function pushModerateComment(int $id)
     {
         $this->_commentManager->pushModerated($id);
@@ -117,8 +100,8 @@ class Backend
     }
 
     /**
-    *fonction pour récupèrer des données ds 2 tables différentes
-    **/
+     * fonction pour récupèrer des données ds 2 tables différentes
+     */
     public function accessModerateCommentView()
     {
         $commentsModerate = $this->_commentManager->accessModerateCommentView();
@@ -127,8 +110,8 @@ class Backend
     }
 
     /**
-    *fonction pour accéder à la vue de modification d'un post
-    **/
+     * fonction pour accéder à la vue de modification d'un post
+     */
     public function accessWysiwyg(int $id)
     {
         $post = $this->_postManager->getPost($id);
@@ -137,8 +120,8 @@ class Backend
     }
 
     /**
-    *fonction pour modifier un post
-    **/
+     * fonction pour modifier un post
+     */
     public function updatePost (int $id, string $content_post, string $updateTitle)
     {
         $this->_postManager->updatePost($id, $content_post, $updateTitle);
@@ -150,8 +133,8 @@ class Backend
     }
 
     /**
-    *fonction pour effacer un post et les commentaires associés
-    **/
+     * fonction pour effacer un post et les commentaires associés
+     */
     public function deletePost(int $id)
     {
         $this->_postManager->deletePost($id);
