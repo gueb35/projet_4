@@ -64,7 +64,7 @@ class Backend
     /**
      * fonction pour vérifier le login et mot de passe
      */
-    public function verifAccess($loginForm, $passwordForm)
+    public function verifAccess(string $loginForm, string $passwordForm)
     {
         $login = $this->_accessManager->getLogin();
         $password = $this->_accessManager->getPassword();
@@ -122,7 +122,7 @@ class Backend
     /**
      * fonction pour modifier un post
      */
-    public function updatePost (int $id, string $content_post, string $updateTitle)
+    public function updatePost(int $id, string $content_post, string $updateTitle)
     {
         $this->_postManager->updatePost($id, $content_post, $updateTitle);
         $posts = $this->_postManager->getPosts();

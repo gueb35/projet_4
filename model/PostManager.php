@@ -91,7 +91,7 @@ class PostManager extends Manager
      * @param string $updateTitle
      *  titre de l'épisode
      */
-    public function updatePost ($id, $content_post, $updateTitle)
+    public function updatePost($id, $content_post, $updateTitle)
     {
         $db = $this->dbConnect($id);
         $update = $db->prepare('UPDATE posts SET content_post = :newcontent_post, title = :newTitle WHERE id = :newId');
@@ -108,7 +108,8 @@ class PostManager extends Manager
      * @param int $id
      *  numéro de l'épisode
      */
-    public function deletePost($id){
+    public function deletePost($id)
+    {
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');
         $delete->execute(array($id));
