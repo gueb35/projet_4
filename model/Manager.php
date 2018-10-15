@@ -4,7 +4,7 @@ namespace alban\projet_4\model;
 
 abstract class Manager
 {
-    static protected $_db;//static attribut accèssible lors d'une nouvelle instance de la classe
+    static protected $_db;
 
     public function __construct()
     {
