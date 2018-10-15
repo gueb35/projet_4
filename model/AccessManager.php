@@ -9,8 +9,7 @@ class AccessManager extends Manager
      */
     public function getLogin()
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT loginAdministrator FROM administrator');
+        $req = self::$_db->prepare('SELECT loginAdministrator FROM administrator');
         $req->execute(array());
         $login = $req->fetch();
 
@@ -22,8 +21,7 @@ class AccessManager extends Manager
      */
     public function getPassword()//récupère le mot de passe
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT passwordAdministrator FROM administrator');
+        $req = self::$_db->prepare('SELECT passwordAdministrator FROM administrator');
         $req->execute(array());
         $password = $req->fetch();
 

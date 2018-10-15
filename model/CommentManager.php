@@ -16,8 +16,7 @@ class CommentManager extends Manager
      */
     public function postComment($postId, $author, $comment)
     {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO user (post_id, author, comment, creation_date) VALUES(?, ?, ?, NOW())');
+        $comments = self::$_db->prepare('INSERT INTO user (post_id, author, comment, creation_date) VALUES(?, ?, ?, NOW())');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectedLines;
@@ -31,8 +30,8 @@ class CommentManager extends Manager
      */
     public function getComments($postId)
     {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM user WHERE post_id = ? ORDER BY creation_date DESC');
+        // $db = $this->dbConnect();
+        $comments = self::$_db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM user WHERE post_id = ? ORDER BY creation_date DESC');
         $comments->execute(array($postId));
 
         return $comments;
@@ -46,8 +45,7 @@ class CommentManager extends Manager
      */
     public function accessModerateCommentView()
     {
-        $db = $this->dbConnect();
-        $commentsModerate = $db->prepare('SELECT us.comment AS commentModerate, us.author
+        $commentsModerate = self::$_db->prepare('SELECT us.comment AS commentModerate, us.author
         AS authorComMod, us.id AS idComMod, us.moderated AS comMod, po.title AS titleComMod,
         DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
         FROM user AS us
@@ -69,8 +67,7 @@ class CommentManager extends Manager
      */
     public function pushModerated($id)
     {
-        $db = $this->dbConnect();
-        $moderate = $db->prepare('UPDATE user SET moderated = "modéré" WHERE id = :newId');
+        $moderate = self::$_db->prepare('UPDATE user SET moderated = "modéré" WHERE id = :newId');
         $moderate->execute(array(
             'newId' => $id
             ));
@@ -86,8 +83,7 @@ class CommentManager extends Manager
      */
     public function moderated($id)
     {
-        $db = $this->dbConnect();
-        $moderate = $db->prepare('UPDATE user SET moderated = "signalé" WHERE id = :newId');
+        $moderate = self::$_db->prepare('UPDATE user SET moderated = "signalé" WHERE id = :newId');
         $moderate->execute(array(
             'newId' => $id
             ));
@@ -99,9 +95,9 @@ class CommentManager extends Manager
      * @param int $postId
      *  numéro correspondant à l'id du post
      */
-    public function deleteComment($postId){
-        $db = $this->dbConnect();
-        $delete = $db->prepare('DELETE FROM user WHERE post_id = ?');
+    public function deleteComment($postId)
+    {
+        $delete = self::$_db->prepare('DELETE FROM user WHERE post_id = ?');
         $delete->execute(array($postId));
     }
 }

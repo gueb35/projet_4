@@ -4,23 +4,13 @@ namespace alban\projet_4\model;
 
 abstract class Manager
 {
-    /**
-     * fonction pour la connexion à la bdd
-     * 
-     * @param host
-     *  nom d'hôte
-     * @param dbname
-     *  nom de la bdd
-     * @param charset
-     *  encodage
-     * @param string
-     *  nom d'utilisateur
-     * @param string
-     *  mdp bdd
-     */
-    protected function dbConnect()
+    static protected $_db;//static attribut accèssible lors d'une nouvelle instance de la classe
+
+    public function __construct()
     {
-        $db = new \PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-        return $db;
+        if(self::$_db == null)
+        {
+            self::$_db = new \PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+        }
     }
 }
