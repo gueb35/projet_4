@@ -30,7 +30,6 @@ class CommentManager extends Manager
      */
     public function getComments($postId)
     {
-        // $db = $this->dbConnect();
         $comments = self::$_db->prepare('SELECT id, post_id, author, moderated, comment, creation_date, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM user WHERE post_id = ? ORDER BY creation_date DESC');
         $comments->execute(array($postId));
 
