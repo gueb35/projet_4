@@ -83,7 +83,7 @@ class Backend
     /**
      * fonction pour signaler un commentaire
      */
-    public function moderatedComment(string $commentId, int $id)
+    public function moderatedComment(int $commentId)
     {
         $this->_commentManager->moderated($commentId);
     }

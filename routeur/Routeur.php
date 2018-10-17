@@ -178,7 +178,7 @@ class Routeur{
         {
             $_GET['id'] = (int) $_GET['id'];
             $_GET['postId'] = (int) $_GET['postId'];
-            $this->_backend->moderatedComment($_GET['id'], $_GET['postId']);//signalé
+            $this->_backend->moderatedComment($_GET['id']);//signalé
             $this->_frontend->post($_GET['postId']);
         }else{
             // Autre exception
