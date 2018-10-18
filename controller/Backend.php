@@ -32,6 +32,23 @@ class Backend
     }
 
     /**
+     * fonction permettant de vérifier si le booléen existe
+     */
+    private function checkAccess()
+    {
+        if(($_SESSION['auth']) == true)
+        {
+            return;
+        }
+        else
+        {
+            //Détruit la session
+            $_SESSION = array();
+            session_destroy();
+            header('location:index.php');exit;
+        }
+    }
+    /**
      * fonction pour détruire la session accessible depuis le bouton déconnexion du menu du template Admin
      */
     public function stopSession()
@@ -39,13 +56,14 @@ class Backend
         //Détruit la session
         $_SESSION = array();
         session_destroy();
-        header('location:index.php');
+        header('location:index.php');exit;
     }
 
     /**
      *fonction pour envoyer un épisode en bdd
      */
     public function sendText(string $content_post, string $title){
+        $this->checkAccess();
         $this->_postManager->postText($content_post, $title);
         $posts = $this->_postManager->getPosts();
 
@@ -56,6 +74,7 @@ class Backend
      * fonction pour afficher tous les épisodes sur la page d'accueil de l'espace administrateur
      */
     public function postsAdministrator(){
+        $this->checkAccess();
         $posts = $this->_postManager->getPosts();
 
         require('view/backend/administratorHomeView.php');
@@ -67,12 +86,11 @@ class Backend
     public function verifAccess(string $loginForm, string $passwordForm)
     {
         $loginAndPassword = $this->_accessManager->getLoginAndPassword();
-        // var_dump($loginAndPassword);die;
-        // $password = $this->_accessManager->getPassword();
 
         if(($loginAndPassword['loginAdministrator'] == $loginForm) && ($loginAndPassword['passwordAdministrator'] == (self::PREFIXE.hash("sha256",$passwordForm).self::SUFFIXE)))
         {
             $_SESSION['auth'] = true;
+            $this->checkAccess();
             $posts = $this->_postManager->getPosts();
             require('view/backend/administratorHomeView.php');
         }
@@ -94,6 +112,7 @@ class Backend
      */
     public function pushModerateComment(int $id)
     {
+        $this->checkAccess();
         $this->_commentManager->pushModerated($id);
         $commentsModerate = $this->_commentManager->accessModerateCommentView();
 
@@ -105,6 +124,7 @@ class Backend
      */
     public function accessModerateCommentView()
     {
+        $this->checkAccess();
         $commentsModerate = $this->_commentManager->accessModerateCommentView();
 
         require('view/backend/administratorModerateComment.php');
@@ -115,6 +135,7 @@ class Backend
      */
     public function accessWysiwyg(int $id)
     {
+        $this->checkAccess();
         $post = $this->_postManager->getPost($id);
 
         require('view/backend/administratorUpdateView.php');
@@ -125,6 +146,7 @@ class Backend
      */
     public function updatePost(int $id, string $content_post, string $updateTitle)
     {
+        $this->checkAccess();
         $this->_postManager->updatePost($id, $content_post, $updateTitle);
         $posts = $this->_postManager->getPosts();
 
@@ -138,6 +160,7 @@ class Backend
      */
     public function deletePost(int $id)
     {
+        $this->checkAccess();
         $this->_postManager->deletePost($id);
         $posts = $this->_postManager->getPosts();
 

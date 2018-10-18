@@ -1,9 +1,4 @@
-<?php
-
-if(isset($_SESSION['auth']) === true)
-{
-?>
-    <?php $title = 'Remplacer ou modifier un épisode !'; ?><!--définit le titre de la page-->
+<?php $title = 'Remplacer ou modifier un épisode !'; ?><!--définit le titre de la page-->
 
     <?php ob_start(); ?><!--définit le contenu de la page-->
 
@@ -33,14 +28,4 @@ if(isset($_SESSION['auth']) === true)
 
     <?php $content = ob_get_clean(); ?><!--récupère le contenu généré et met tout ds $content-->
 
-    <?php require('templateAdmin.php'); ?>
-<?php
-}
-else
-{
-    //Détruit la session
-	$_SESSION = array();
-	session_destroy();
-	header('location:index.php');
-}
-?>
+<?php require('templateAdmin.php'); ?>
