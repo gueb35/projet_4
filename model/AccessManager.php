@@ -7,24 +7,12 @@ class AccessManager extends Manager
     /**
      * fonction qui récupère le login
      */
-    public function getLogin()
+    public function getLoginAndPassword()
     {
-        $req = self::$_db->prepare('SELECT loginAdministrator FROM administrator');
-        $req->execute(array());
-        $login = $req->fetch();
+        $req = self::$_db->prepare('SELECT loginAdministrator, passwordAdministrator FROM administrator');
+        $req->execute();
+        $loginAndPassword = $req->fetch();
 
-        return $login;
-    }
-
-    /**
-     * fonction qui récupère le mot de passe
-     */
-    public function getPassword()//récupère le mot de passe
-    {
-        $req = self::$_db->prepare('SELECT passwordAdministrator FROM administrator');
-        $req->execute(array());
-        $password = $req->fetch();
-
-        return $password;
+        return $loginAndPassword;
     }
 }

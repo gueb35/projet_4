@@ -27,7 +27,7 @@ class PostManager extends Manager
     {
         
         $posts = self::$_db->prepare('SELECT id, title, content_post, SUBSTRING(content_post, 1, 500) AS short_post FROM posts');
-        $posts->execute(array());
+        $posts->execute();
 
         return $posts;
     }

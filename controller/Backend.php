@@ -66,10 +66,11 @@ class Backend
      */
     public function verifAccess(string $loginForm, string $passwordForm)
     {
-        $login = $this->_accessManager->getLogin();
-        $password = $this->_accessManager->getPassword();
+        $loginAndPassword = $this->_accessManager->getLoginAndPassword();
+        // var_dump($loginAndPassword);die;
+        // $password = $this->_accessManager->getPassword();
 
-        if(($login['loginAdministrator'] == $loginForm) && ($password['passwordAdministrator'] == (self::PREFIXE.hash("sha256",$passwordForm).self::SUFFIXE)))
+        if(($loginAndPassword['loginAdministrator'] == $loginForm) && ($loginAndPassword['passwordAdministrator'] == (self::PREFIXE.hash("sha256",$passwordForm).self::SUFFIXE)))
         {
             $_SESSION['auth'] = true;
             $posts = $this->_postManager->getPosts();

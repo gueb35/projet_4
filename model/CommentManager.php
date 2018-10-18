@@ -51,7 +51,7 @@ class CommentManager extends Manager
         INNER JOIN posts AS po
         ON us.post_id = po.id
         WHERE us.moderated = "signalé" || us.moderated = "modéré" ORDER BY creation_date DESC');
-        $commentsModerate->execute(array());
+        $commentsModerate->execute();
 
         return $commentsModerate;
     }
